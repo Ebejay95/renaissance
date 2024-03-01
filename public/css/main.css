@@ -1,0 +1,74 @@
+body {
+	position: relative;
+    display: block;
+    margin: 0;
+	font-family: sans-serif;
+}
+body > .body-img {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	object-position: center;
+	z-index: 0;
+}
+body > main{
+	position: relative;
+	z-index: 1;
+	min-height: 100vh;
+	backdrop-filter: blur(6px);
+}
+
+.auth-wrap {
+	max-width: 600px;
+	margin: auto;
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	width: 100%;
+	transform: translate(-50%,-50%);
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+.card {
+	box-sizing: border-box;
+	background-color: rgba(0, 0, 0, 0.3);
+	backdrop-filter: blur(4px);
+	padding: 10px;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+.card a {
+	color: white;
+}
+a:not(.button){
+	transition: 0.2s;
+	font-weight: 400;
+	text-decoration: none;
+}
+a:not(.button):hover{
+	opacity: 0.6;
+}
+
+a.button, input[type=submit], button[type=submit] {
+	transition: 0.2s;
+	font-weight: 400;
+	display: inline-block;
+	text-decoration: none;
+	box-sizing: border-box;
+	padding: 0.4em;
+	color:white;
+	background-color: rgba(0, 0, 0, 0.3);
+	border: none;
+	cursor: pointer;
+}
+a.button:hover, input[type=submit]:hover, button[type=submit]:hover{
+	opacity: 1;
+	background-color: rgba(0, 0, 0, 0.8);
+}
