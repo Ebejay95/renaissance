@@ -8,4 +8,10 @@ const router = express.Router();
 
 router.get('/', gameController.getIndex);
 
+router.get('/new-game', gameController.getNewGameRoom);
+router.post('/new-game', gameController.postGame);
+
+router.get('/game/:gameId', gameController.getGame);
+router.post('/game/restart/:gameId', gameController.restartGame);
+
 module.exports = router;

@@ -1,7 +1,7 @@
 const path = require('path');
 
 const express = require('express');
-const bcrypt = require('bcrypt')
+const flash = require('express-flash');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const session = require('express-session');
@@ -35,7 +35,7 @@ app.use(
     store: store
   })
 );
-
+app.use(flash());
 app.use((req, res, next) => {
   if (!req.session.user) {
     return next();
@@ -55,25 +55,25 @@ app.use(authRoutes);
 app.use(errorController.get404);
 
 mongoose
-  .connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(MONGODB_URI)
   .then(result => {
 	const server = app.listen(3000, () => {
 		console.log('Express app listening on port 3000');
 	  });
-// Create a WebSocket server
-const wss = new WebSocket.Server({ server });
-
-// Handle WebSocket connections
-wss.on('connection', function connection(ws) {
-  ws.on('message', function incoming(message) {
-    console.log('received: %s', message);
-  });
-  ws.on('clicked_socket', function incoming(message) {
-    console.log('shit the socket was clicked!');
-  });
-
-  ws.send('Hello, WebSocket client!');
-});
+//// Create a WebSocket server
+//const wss = new WebSocket.Server({ server });
+//
+//// Handle WebSocket connections
+//wss.on('connection', function connection(ws) {
+//  ws.on('message', function incoming(message) {
+//    console.log('received: %s', message);
+//  });
+//  ws.on('clicked_socket', function incoming(message) {
+//    console.log('shit the socket was clicked!');
+//  });
+//
+//  ws.send('Hello, WebSocket client!');
+//});
   })
   .catch(err => {
     console.log(err);

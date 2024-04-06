@@ -1,0 +1,19 @@
+<%- include('../includes/head.ejs') %>
+
+<button style="display:none;" id="zoomInBtn">Zoom In</button>
+<button style="display:none;" id="zoomOutBtn">Zoom Out</button>
+
+<div class="body-img-wrap">
+	<img class="body-img" src="/img/game.jpg"/>
+</div>
+<main>
+	<div id="mapwrap">
+		<div id="map">
+			<% regions.forEach(function(region) { %>
+				<%- region.svgPath %>
+			<% }); %></div>
+		</div>
+	</div>
+</main>
+
+<%- include('../includes/end.ejs') %>

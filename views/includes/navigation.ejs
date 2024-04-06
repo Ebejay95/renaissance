@@ -9,7 +9,7 @@
             <li class="main-header__item">
                 <a class="<%= path === '/products' ? 'active' : '' %>" href="/products">Products</a>
             </li>
-            <% if (isAuthenticated) { %>
+            <% if (user) { %>
                 <li class="main-header__item">
                     <a class="<%= path === '/cart' ? 'active' : '' %>" href="/cart">Cart</a>
                 </li>
@@ -27,7 +27,7 @@
             <% } %>
         </ul>
         <ul class="main-header__item-list">
-            <% if (!isAuthenticated) { %>
+            <% if (!user) { %>
                 <li class="main-header__item">
                     <a class="<%= path === '/login' ? 'active' : '' %>" href="/login">Login</a>
                 </li>

@@ -1,0 +1,17 @@
+<%- include('../includes/head.ejs') %>
+
+<main>
+	<section>
+		<div class="card">
+			<form method="post" action="/new-game">
+				<div class="form-control">
+					<label for="name">Name</label>
+					<input type="name" name="name" id="name" value="" placeholder="Name">
+				</div>
+				<input type="submit" value="Spiel erstellen">
+			</form>
+		</div>
+	</section>
+</main>
+
+<%- include('../includes/end.ejs') %>

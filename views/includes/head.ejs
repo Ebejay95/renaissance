@@ -5,6 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><%= pageTitle %></title>
+    <title>
+		<% if (pageTitle == 'Renaissance') { %>
+			<%= pageTitle %>
+		<% } else { %>
+			<%= pageTitle %> - Renaissance
+		<% } %>
+	</title>
     <link rel="stylesheet" href="/css/form.css">
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/auth.css">
+    <link rel="stylesheet" href="/css/map.css">
+</head>
+<body>
+	<div class="flash-container">
+		<% if (locals.messages && locals.messages.error) { %>
+			<div class="flash-message error-message"><%= locals.messages.error %></div>
+		<% } %>
+		<% if (locals.messages && locals.messages.success) { %>
+		  <div class="flash-message success-message"><%= locals.messages.success %></div>
+		<% } %>
+	</div>

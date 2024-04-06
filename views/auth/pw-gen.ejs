@@ -1,0 +1,22 @@
+<%- include('../includes/head.ejs') %>
+
+<div class="body-img-wrap">
+	<img class="body-img" src="/img/login-screen.png"/>
+</div>
+    <main>
+		<div class="card auth-wrap">
+			<h1>Neues Passwort erstellen</h1>
+			<form class="login-form" action="/pw-gen" method="POST">
+				<div class="form-control">
+					<label for="email">E-Mail</label>
+					<input type="email" name="email" id="email" placeholder="E-Mail-Adresse">
+				</div>
+				<button class="btn" type="submit">Passwort anfragen</button>
+			</form>
+			<p>
+				Doch lieber einloggen? <a href="/login">zum Login</a>
+			</p>
+		</div>
+    </main>
+
+<%- include('../includes/end.ejs') %>

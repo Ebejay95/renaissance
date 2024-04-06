@@ -1,11 +1,52 @@
 <%- include('../includes/head.ejs') %>
-</head>
-<body>
-	<img class="body-img" src="/img/login-screen.png"/>
-    <main>
-		<div class="card auth-wrap">
-			<h1>Das Zeitalter der Renaissance</h1>
-			<a class="button" href="/login">Starten</a>
+
+	<% if (user) { %>
+		<nav class="flex">
+			<div>Hallo, <%= user.name %></div>
+			<div class="flex">
+				<a class="button">Profil</a>
+				<a href="/logout" class="button">Logout</a>
+			</div>
+		</nav>
+
+		<div class="body-img-wrap">
+			<img class="body-img" src="/img/game.jpg"/>
 		</div>
-    </main>
+		<main>
+			<section>
+				<a href="/new-game" class="button">Neues Spiel</a>
+				<ul class="big-list flex col">
+					<% games.forEach(function(game) { %>
+						<a href="/game/<%= game._id %>">
+							<li class="card flex align-center space-between">
+								<div>
+									<h4><%= game.name %></h4>
+								</div>
+								<div>
+									<%= game.state %>
+								</div>
+								<div>
+									<%= game.last_action_at %>
+								</div>
+							</li>
+						</a>
+						<form action="/game/restart/<%= game._id %>" method="post">
+							<input type="submit" value="Refresh">
+						</form>
+					<% }); %>
+				</ul>
+			</section>
+		</main>
+	<% } else { %>
+		<div class="body-img-wrap">
+			<img class="body-img" src="/img/login-screen.png"/>
+		</div>
+		<main>
+			<div class="card auth-wrap">
+				<h1>Das Zeitalter der Renaissance</h1>
+				<a class="button" href="/login">Starten</a>
+			</div>
+		</main>
+	<% } %>
+
 <%- include('../includes/end.ejs') %>

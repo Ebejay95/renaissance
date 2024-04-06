@@ -1,31 +1,31 @@
 <%- include('../includes/head.ejs') %>
-    <link rel="stylesheet" href="/css/forms.css">
-    <link rel="stylesheet" href="/css/auth.css">
-</head>
-
-<body>
+<div class="body-img-wrap">
 	<img class="body-img" src="/img/login-screen.png"/>
-    <main>
-		<div class="card auth-wrap">
-			<h1>Registrieren</h1>
-			<form class="login-form" action="/login" method="POST">
-				<div class="form-control">
-					<label for="name" autocomplete="email">Name</label>
-					<input type="name" name="name" id="name">
-				</div>
-				<div class="form-control">
-					<label for="email" autocomplete="email">E-Mail</label>
-					<input type="email" name="email" id="email">
-				</div>
-				<div class="form-control">
-					<label for="password">Password</label>
-					<input type="password" name="password" id="password">
-				</div>
-				<button class="btn" type="submit">Jetzt Registrieren</button>
-			</form>
-			<p>
-				Hast du bereit einen Account? <a href="/login">Login</a>
-			</p>
-		</div>
-    </main>
+</div>
+<main>
+    <div class="card auth-wrap">
+        <h1>Registrieren</h1>
+        <form class="login-form" action="/signup" method="POST">
+            <div class="form-control">
+                <label for="name" autocomplete="email">Name</label>
+                <input class="username-input" type="name" name="name" id="name" value="<%= formData ? formData.name : '' %>" placeholder="Benutzername">
+				<span for="name" class="input-notification"></span>
+            </div>
+            <div class="form-control">
+                <label for="email" autocomplete="email">E-Mail</label>
+                <!-- Hier fügst du die vorherige Benutzereingabe ein -->
+                <input type="email" name="email" id="email" value="<%= formData ? formData.email : '' %>" placeholder="E-Mail-Adresse">
+            </div>
+            <div class="form-control">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Passwort">
+            </div>
+            <button class="btn" type="submit">Jetzt Registrieren</button>
+        </form>
+        <p>
+            Hast du bereits einen Account? <a href="/login">Login</a>
+        </p>
+    </div>
+</main>
+
 <%- include('../includes/end.ejs') %>
