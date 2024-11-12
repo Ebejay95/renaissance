@@ -32,6 +32,7 @@ a.button, input[type=submit], button[type=submit] {
 	padding: 0.4em;
 	cursor: pointer;
 	text-align: center;
+	user-select: none;
 }
 a.button:hover, input[type=submit]:hover, button[type=submit]:hover{
 	border-top: var(--sborder-bottom);

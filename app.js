@@ -9,12 +9,11 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const errorController = require('./controllers/error');
 const User = require('./models/user');
 const WebSocket = require('ws')
-const MONGODB_URI =
-  'mongodb+srv://jonathan:Klavier@ebejay95.nbxphyi.mongodb.net/?retryWrites=true&w=majority&appName=Ebejay95';
+require('dotenv').config();
 
 const app = express();
 const store = new MongoDBStore({
-  uri: MONGODB_URI,
+  uri: process.env.MONGODB_URI,
   collection: 'sessions'
 });
 
@@ -55,7 +54,7 @@ app.use(authRoutes);
 app.use(errorController.get404);
 
 mongoose
-  .connect(MONGODB_URI)
+  .connect(process.env.MONGODB_URI)
   .then(result => {
 	const server = app.listen(3000, () => {
 		console.log('Express app listening on port 3000');
