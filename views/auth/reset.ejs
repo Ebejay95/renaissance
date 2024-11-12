@@ -1,0 +1,30 @@
+<%- include('../includes/head.ejs') %>
+
+<div class="body-img-wrap">
+    <img class="body-img" src="/img/login-screen.png"/>
+</div>
+<main>
+    <div class="card auth-wrap">
+        <h1>Neues Passwort erstellen</h1>
+        <form class="login-form" action="/reset" method="POST">
+            <input type="hidden" name="userId" value="<%= userId %>">
+            <input type="hidden" name="passwordToken" value="<%= passwordToken %>">
+            <div class="form-control">
+                <label for="password">Neues Passwort</label>
+                <input 
+                    type="password" 
+                    name="password" 
+                    id="password" 
+                    placeholder="Mindestens 8 Zeichen"
+                    required
+                >
+            </div>
+            <button class="btn" type="submit">Passwort speichern</button>
+        </form>
+        <p>
+            Zurück zum <a href="/login">Login</a>
+        </p>
+    </div>
+</main>
+
+<%- include('../includes/end.ejs') %>

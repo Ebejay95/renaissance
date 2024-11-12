@@ -10,7 +10,7 @@ const errorController = require('./controllers/error');
 const User = require('./models/user');
 const WebSocket = require('ws')
 const MONGODB_URI =
-  'mongodb+srv://jonathan_eberle:Mu4GadW95!@cluster0.8ujod.mongodb.net/renaissance?retryWrites=true&w=majority';
+  'mongodb+srv://jonathan:Klavier@ebejay95.nbxphyi.mongodb.net/?retryWrites=true&w=majority&appName=Ebejay95';
 
 const app = express();
 const store = new MongoDBStore({

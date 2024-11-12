@@ -23,4 +23,7 @@ router.post('/ajax-username', authController.validateUserName);
 
 router.get('/logout', authController.postLogout);
 
+router.get('/reset/:token', authController.getReset);
+router.post('/reset', authController.postReset); 
+
 module.exports = router;
