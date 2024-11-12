@@ -5,18 +5,18 @@ const nodemailer = require('nodemailer');
 require('dotenv').config();
 
 const transporter = nodemailer.createTransport({
-    host: 'mail.gmx.net',  // Der GMX SMTP Server
-    port: 587,             // Der SMTP Port
-    secure: false,         // TLS
-    requireTLS: true,      // Erzwingt TLS
+	host: process.env.EMAIL_HOST,
+	port: process.env.EMAIL_PORT,
+    secure: false,
+    requireTLS: true,
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASSWORD
     },
     tls: {
-        rejectUnauthorized: true  // Wichtig für die Sicherheit
+        rejectUnauthorized: true
     },
-    debug: true           // Aktiviert Debug-Ausgaben
+    debug: true
 });
 
 // Testfunktion zum Überprüfen der Verbindung
