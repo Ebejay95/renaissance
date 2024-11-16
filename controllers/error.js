@@ -15,7 +15,6 @@ exports.get404 = async (req, res, next) => {
         });
     } catch (err) {
         console.error('Error in 404 handler:', err);
-        // Fallback rendering without user data in case of database error
         res.status(404).render('404', {
             pageTitle: 'Page Not Found',
             path: '/404',

@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function(){
 				return;
 			}
 	
-			// Stringify the body object
 			var requestBody = JSON.stringify({
 				"name": username
 			});

@@ -35,11 +35,9 @@ function addFriend(friendId) {
     .then(data => {
         if (!data.success) throw new Error(data.message);
         
-        // Remove "no friends" message if present
         const noFriendsMsg = friendsList.querySelector('p');
         if (noFriendsMsg) noFriendsMsg.remove();
         
-        // Create new friend list item
         const li = document.createElement('li');
         li.className = 'friend-item';
         li.id = `friend-${data.friend.id}`;

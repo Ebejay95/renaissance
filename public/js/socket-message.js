@@ -14,14 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const userName = document.getElementById('userInput').value;
     let ws;
 
-    // Funktion zum Aktualisieren des Status
     function updateStatus(message, type = 'info') {
         if (gameStatus) {
             gameStatus.textContent = message;
-            // Entferne alte Klassen
             gameStatus.classList.remove('text-gray-500', 'text-green-500', 'text-red-500', 'text-yellow-500');
             
-            // Füge neue Klasse basierend auf dem Typ hinzu
             switch(type) {
                 case 'success':
                     gameStatus.classList.add('text-green-500');
@@ -126,7 +123,6 @@ document.addEventListener('DOMContentLoaded', () => {
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-    // Initialer Status
     updateStatus('Initializing...', 'info');
     connectWebSocket();
 });

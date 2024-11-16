@@ -5,8 +5,8 @@ exports.createProgresses = async (game_id) => {
     const progressData = [
         { letter: "A", name: "Sternenkunde", desciption:"Ermöglicht die Überquerung eriners Meerfeldes als ob es sich um eine Küstenregion handelt. Veringert die Auswirkung von Mystizismus.", cost: 30, discount: 20, group: "Wissenschaft", dependencies: [], effects: ["reduceMystic", "crossOneSea"], game: game_id },
         { letter: "B", name: "Anatomie", description: "Verringert den Elendsindex um eine Stufe. Veringert die Auswirkung von Mystizismus.", cost: 60, discount: 20, group: "Wissenschaft", dependencies: [], effects: ["discMisery", "reduceMystic"], game: game_id },
-        { letter: "C", name: "Materialkunde", description: "Hebt die Auswirkung von Alchemie auf. Veringert die Auswirkung von Mystizismus.", cost: 90, discount: 20, group: "Wissenschaft", dependencies: [], effects: ["blockAlchemy", "reduceMystic"], game: game_id },
-        { letter: "D", name: "Materialkunde",  description: "In der Einkommensphase wird der Elensindex um eine Stufe verbessert. Veringert die Auswirkung von Mystizismus.", cost: 120, discount: 20, group: "Wissenschaft", dependencies: [], effects: ["blockAlchemy", "reduceMystic"], game: game_id },
+        { letter: "C", name: "Materialkunde", description: "Hebt die Auswirkung von Alchimie auf. Veringert die Auswirkung von Mystizismus.", cost: 90, discount: 20, group: "Wissenschaft", dependencies: [], effects: ["blockAlchimy", "reduceMystic"], game: game_id },
+        { letter: "D", name: "Materialkunde",  description: "In der Einkommensphase wird der Elensindex um eine Stufe verbessert. Veringert die Auswirkung von Mystizismus.", cost: 120, discount: 20, group: "Wissenschaft", dependencies: [], effects: ["discMiseryLoop", "reduceMystic"], game: game_id },
         { letter: "E", name: "Patronatsrecht", description: "Erlaubt die Nutzung von Nachlässen der durch andere Spieler ausgespielten Persönlichkeiten", cost: 30, discount: 20, group: "Religion", dependencies: [], effects: ["patronat"], game: game_id },
         { letter: "F", name: "Heilige Absolution", description: "Erhält zu Beginn der Expansionsphase von jedem Spieler der diesen Fortschritt nicht besitzt 2 Truppen.", cost: 60, discount: 20, group: "Religion", dependencies: [], effects: ["holyAbsolution"], game: game_id },
         { letter: "G", name: "Gottvertrauen", description: "Ein Angriff gelint wernn das Ergebnis des grünen Würfels >= als die aktuelle Position des Spielers ist.", cost: 90, discount: 20, group: "Religion", dependencies: [], effects: ["trustInGod"], game: game_id },
@@ -56,7 +56,7 @@ exports.getGroupedProgresses = async (game_id) => {
         const progresses = await Progress.find({ game: game_id }).sort({ letter: 1 });
 
         if (!progresses.length) {
-            return {}; // Leeres Objekt statt null
+            return {};
         }
 
         const groupedProgresses = progresses.reduce((grouped, progress) => {
@@ -70,7 +70,7 @@ exports.getGroupedProgresses = async (game_id) => {
         return groupedProgresses;
     } catch (err) {
         console.error('Fehler beim Abrufen der gruppierten Progresses:', err);
-        return {}; // Auch bei Fehlern ein leeres Objekt zurückgeben
+        return {};
     }
 };
 

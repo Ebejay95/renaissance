@@ -19,7 +19,6 @@ const transporter = nodemailer.createTransport({
     debug: true
 });
 
-// Testfunktion zum Überprüfen der Verbindung
 async function verifyEmailSetup() {
     try {
         await transporter.verify();
@@ -31,7 +30,6 @@ async function verifyEmailSetup() {
     }
 }
 
-// E-Mail-Versand Funktion
 async function sendEmail(options) {
     try {
         const info = await transporter.sendMail(options);
@@ -81,7 +79,6 @@ exports.processPwGen = async (req, res, next) => {
             return res.redirect('/pw-gen');
         }
 
-        // Generiere einen kryptografisch sicheren Token
         const buffer = await new Promise((resolve, reject) => {
             crypto.randomBytes(32, (err, buffer) => {
                 if (err) reject(err);
@@ -91,13 +88,11 @@ exports.processPwGen = async (req, res, next) => {
         
         const token = buffer.toString('hex');
         
-        // Speichere Token und Ablaufzeit
         user.resetToken = token;
-        user.resetTokenExpiration = Date.now() + 3600000; // 1 Stunde
+        user.resetTokenExpiration = Date.now() + 3600000;
         
         await user.save();
 
-        // Konstruiere die vollständige Reset-URL
         const resetUrl = `${process.env.BASE_URL}/reset/${token}`;
 
         const mailOptions = {
@@ -215,8 +210,8 @@ exports.postLogin = (req, res, next) => {
 		
 		bcrypt.compare(password, user.password, (err, result) => {
 			if (err) {
-				console.log(err); // Log any error that occurs during comparison
-				req.flash('error', 'Ein Fehler ist beim Vergleich der Passwörter aufgetreten.'); // Notify user about the error
+				console.log(err);
+				req.flash('error', 'Ein Fehler ist beim Vergleich der Passwörter aufgetreten.');
 				return res.render('auth/login', {
 				   path: '/login',
 				   pageTitle: 'Login',
@@ -226,8 +221,7 @@ exports.postLogin = (req, res, next) => {
 			}
 			
 			if (result) {
-				// Passwords match, handle successful login
-				req.session.user = true; // Set session variables
+				req.session.user = true;
 				req.session.user = user;
 				req.session.save(err => {
 					if (err) {
@@ -236,7 +230,6 @@ exports.postLogin = (req, res, next) => {
 					res.redirect('/');
 				});
 			} else {
-				// Passwords don't match, handle incorrect password
 				req.flash('error', 'Ungültige E-Mail-Adresse oder Passwort.'); 
 				return res.render('auth/login', {
 				   path: '/login',
@@ -255,21 +248,18 @@ exports.validateUserName = (req, res, next) => {
 	
     const nameRegex = /^[a-z0-9_]+$/;
     if (!nameRegex.test(name)) {
-        return res.send('false'); // If the name doesn't match the format, return false
+        return res.send('false')
     }
     
-    // Assuming you have a User model for interacting with the database
     User.findOne({ name: name }, (err, user) => {
         if (err) {
             console.error("Error checking username uniqueness:", err);
-            return res.send('false'); // If an error occurs, return false
+            return res.send('false');
         }
         
         if (user) {
-            // If a user with the same name already exists, return false
             return res.send('not-unique');
         } else {
-            // If the username is unique, return true
             return res.send('true');
         }
     });

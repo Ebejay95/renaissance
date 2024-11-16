@@ -3,8 +3,8 @@ const express = require('express');
 const authController = require('../controllers/auth');
 
 const router = express.Router();
-router.use(express.json()); // For parsing application/json
-router.use(express.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
+router.use(express.json());
+router.use(express.urlencoded({ extended: true }));
 
 
 router.get('/login', authController.getLogin);

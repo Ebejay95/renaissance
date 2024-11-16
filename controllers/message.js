@@ -8,7 +8,6 @@ exports.postMessage = async (req, res, next) => {
         console.log('Received message request:', req.body);
         const { content, gameId, username } = req.body;
 
-        // Validate request body
         if (!content || !gameId || !username) {
             console.log('Validation failed:', { content, gameId, username });
             return res.status(400).json({
@@ -17,7 +16,6 @@ exports.postMessage = async (req, res, next) => {
             });
         }
 
-        // Find user by username
         console.log('Find user by username');
         const user = typeof username === 'string' 
             ? await User.findOne({ name: username }) 
@@ -31,7 +29,6 @@ exports.postMessage = async (req, res, next) => {
         }
         console.log('Found user:', user._id);
 
-        // Check if game exists
         console.log('Finding game with ID:', gameId);
         const game = await Game.findById(gameId);
         if (!game) {
@@ -43,7 +40,6 @@ exports.postMessage = async (req, res, next) => {
         }
         console.log('Found game:', game._id);
 
-        // Create new message
         console.log('Creating message with:', {
             content,
             sender: user._id,
@@ -56,10 +52,8 @@ exports.postMessage = async (req, res, next) => {
             game: gameId
         });
 
-        // Log the message object before saving
         console.log('Message object before save:', message);
 
-        // Save with error catching
         try {
             const savedMessage = await message.save();
             console.log('Message saved successfully:', savedMessage);
@@ -72,11 +66,9 @@ exports.postMessage = async (req, res, next) => {
             });
         }
 
-        // Populate sender information
         await message.populate('sender', 'username');
         console.log('Populated message:', message);
 
-        // Send response
         res.status(201).json({
             status: 'success',
             data: {
@@ -105,7 +97,6 @@ exports.getMessages = async (req, res, next) => {
         const limit = parseInt(req.query.limit) || 50;
         const skip = (page - 1) * limit;
 
-        // Validate gameId
         if (!gameId) {
             return res.status(400).json({
                 status: 'error',
@@ -113,7 +104,6 @@ exports.getMessages = async (req, res, next) => {
             });
         }
 
-        // Check if game exists
         const game = await Game.findById(gameId);
         if (!game) {
             return res.status(404).json({
@@ -122,7 +112,6 @@ exports.getMessages = async (req, res, next) => {
             });
         }
 
-        // Get messages with pagination
         const messages = await Message.find({ game: gameId })
             .sort({ createdAt: -1 })
             .skip(skip)
@@ -130,7 +119,6 @@ exports.getMessages = async (req, res, next) => {
             .populate('sender', 'username')
             .lean();
 
-        // Get total count for pagination
         const totalMessages = await Message.countDocuments({ game: gameId });
 
         res.status(200).json({

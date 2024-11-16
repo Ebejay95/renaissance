@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', function(){
     let isDragging = false;
     let startX, startY;
-    let lastX = 0, lastY = 0; // Speichert die letzte Position
+    let lastX = 0, lastY = 0;
     const map = document.getElementById('map');
     let zoomLevel = 1;
-    const zoomSpeed = 0.05; // Verlangsamt den Zoom
-    const maxZoom = 2; // Maximaler Zoom
-    const minZoom = 0.8; // Minimaler Zoom
+    const zoomSpeed = 0.05;
+    const maxZoom = 2;
+    const minZoom = 0.8;
 
     map.addEventListener('mousedown', (e) => {
         isDragging = true;
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function(){
         if (isDragging) {
             const x = e.pageX - startX;
             const y = e.pageY - startY;
-            lastX = x; // Aktualisiert die letzte bekannte Position
+            lastX = x;
             lastY = y;
             updateTransform(x, y);
         }
@@ -50,23 +50,20 @@ document.addEventListener('DOMContentLoaded', function(){
         map.style.transform = `translate(${x}px, ${y}px) scale(${zoomLevel})`;
     }
 
-    // Button-Event-Listener
     document.getElementById('zoomInBtn').addEventListener('click', zoomIn);
     document.getElementById('zoomOutBtn').addEventListener('click', zoomOut);
 
-    // Mausrad-Event für Zoom
     document.getElementById('map').addEventListener('wheel', (event) => {
-        event.preventDefault(); // Verhindert das Scrollen der ganzen Seite
+        event.preventDefault();
         const rect = map.getBoundingClientRect();
-        const mouseX = event.clientX - rect.left; // Mausposition X relativ zum Element
-        const mouseY = event.clientY - rect.top; // Mausposition Y relativ zum Element
+        const mouseX = event.clientX - rect.left;
+        const mouseY = event.clientY - rect.top;
 
         const scaleFactor = (event.deltaY < 0) ? (1 + zoomSpeed) : (1 - zoomSpeed);
         const newZoomLevel = zoomLevel * scaleFactor;
 
         if (newZoomLevel >= minZoom && newZoomLevel <= maxZoom) {
             zoomLevel = newZoomLevel;
-            // Berechnung für zentriertes Zoomen
             const newLastX = mouseX * (1 - scaleFactor) + lastX * scaleFactor;
             const newLastY = mouseY * (1 - scaleFactor) + lastY * scaleFactor;
             lastX = newLastX;

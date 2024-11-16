@@ -2,27 +2,32 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const biomSchema = new Schema({
+const cardSchema = new Schema({
+    label: {
+        type: String,
+        required: true
+    },
     name: {
         type: String,
         required: true
     },
-    className: {
-        type: String,
+    epoch: {
+        type: Number,
         required: true
     },
-    color: {
-        type: String,
+    recycle: {
+        type: Boolean,
         required: true
     },
 	revenues: [Number],
-	epoch: {
-        type: String
-    },
-	availability: {
+	state: {
         type: String,
         required: true,
-        enum: ['neutral', 'shortage', 'abdundance'],
+        enum: ['stack', 'present', 'gone'],
+    },
+	type: {
+        type: String,
+        required: true
     },
     game: {
         type: Schema.Types.ObjectId,
@@ -30,4 +35,4 @@ const biomSchema = new Schema({
     },
 });
 
-module.exports = mongoose.model('Biom', biomSchema);
+module.exports = mongoose.model('Card', cardSchema);

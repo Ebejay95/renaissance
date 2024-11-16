@@ -7,6 +7,9 @@
 	<nav class="flex">
 		<a href="/" class="button"><i class="fa-solid fa-x"></i></a>
 		<img class="party-badge" src="/img/paris-badge.jpg"/>
+		<div id="ducats">
+			<label><i class="fa-solid fa-sack-dollar"></i></i> 251</label>
+		</div>
 		<div class="game-rounds">
 			<div class="round-count">2/13</div>
 			<div class="round-phase first" data-tooltip="Expansion kaufen"><i class="fa-solid fa-coins"></i></div>
@@ -153,10 +156,19 @@
 		</div>
 	</div>
 	<div id="players-hand">
-		<div>
-			<h3><i class="fa-solid fa-sack-dollar"></i></i> 251</h3>
+		<div class="card-hand">
+			<% cards.forEach(function(card, index) { %>
+				<% if (index % 1 === 0) { %>
+					<div class="card">
+						<button>Ausspielen</button>
+						<div class="card-label"><%= card.label %></div>
+					</div>
+				<% } %>
+			<% }); %>
 		</div>
 	</div>
+	
+	
 </main>
 
 <%- include('../includes/end.ejs') %>

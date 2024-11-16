@@ -6,7 +6,7 @@ exports.createBioms = async (game_id) => {
         { name: 'Stein', className: 'stone', color: '#aa7733', revenues: [1, 4, 9, 16, 25, 36, 49, 64], epoch: "2 / 0 / 0", availability: 'neutral', game: game_id },
         { name: 'Wolle', className: 'whool', color: '#660077', revenues: [2, 8, 18, 32, 50, 72, 98, 128, 162], epoch: "2 / 0 / 0", availability: 'neutral', game: game_id },
         { name: 'Holz', className: 'timber', color: '#006600', revenues: [3, 12, 27, 48, 75, 108, 147], epoch: "1 / 2 / 0", availability: 'neutral', game: game_id },
-        { name: 'Weizen', className: 'grain', color: '#ccbbaa', revenues: [4, 16, 36, 64, 100, 144, 196, 256], epoch: "0 / 2 / 0", availability: 'neutral', game: game_id },
+        { name: 'Getreide', className: 'grain', color: '#ccbbaa', revenues: [4, 16, 36, 64, 100, 144, 196, 256], epoch: "0 / 2 / 0", availability: 'neutral', game: game_id },
         { name: 'Stoffe', className: 'cloth', color: '#ff4400', revenues: [8, 20, 45, 80, 125, 180, 245, 320], epoch: "1*/ 1 / 1", availability: 'neutral', game: game_id },
         { name: 'Wein', className: 'wine', color: '#aa0022', revenues: [5, 20, 45, 80, 125, 180], epoch: "1*/ 1 / 1", availability: 'neutral', game: game_id },
         { name: 'Metall', className: 'metal', color: '#444', revenues: [6, 24, 54, 96, 150, 216, 294], epoch: "1 / 1 / 1", availability: 'neutral', game: game_id },

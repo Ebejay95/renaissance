@@ -6,7 +6,6 @@ exports.getProfile = async (req, res, next) => {
     try {
         const user = await User.findById(req.session.user._id).populate('friends');
         
-        // Get games where user is a participant
         const games = await Game.find({
             users: req.session.user._id
         });
@@ -174,7 +173,6 @@ exports.removeFriend = async (req, res, next) => {
             });
         }
 
-        // Fix: Korrekte Konvertierung der IDs zu Strings für den Vergleich
         user.friends = user.friends.filter(id => id.toString() !== friendId.toString());
         friend.friends = friend.friends.filter(id => id.toString() !== userId.toString());
 

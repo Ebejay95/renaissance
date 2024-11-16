@@ -8,7 +8,6 @@ const validateGameForm = () => {
         
         submitButton.disabled = !isValid;
         
-        // Update validation message
         let existingMessage = form.querySelector('.validation-message');
         if (existingMessage) {
             existingMessage.remove();
@@ -24,16 +23,13 @@ const validateGameForm = () => {
         }
     };
     
-    // Add event listeners to checkboxes
     const checkboxes = form.querySelectorAll('input[name="friends"]');
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', updateSubmitButton);
     });
     
-    // Initial validation
     updateSubmitButton();
     
-    // Form submission validation
     form.addEventListener('submit', (e) => {
         const checkedFriends = form.querySelectorAll('input[name="friends"]:checked').length;
         if (checkedFriends < 2 || checkedFriends > 5) {
@@ -52,10 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const selectIf = trigger.getAttribute("data-select-if");
             
             if (trigger.classList.contains("active")) {
-                // Deactivate all if the same active trigger is clicked
                 deactivateAll();
             } else {
-                // Activate the clicked trigger and its corresponding interface
                 deactivateAll();
                 trigger.classList.add("active");
                 const targetInterface = document.querySelector(`.selective-interface[data-select-if="${selectIf}"]`);
@@ -80,3 +74,4 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 });
+

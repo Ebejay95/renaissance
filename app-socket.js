@@ -1,5 +1,6 @@
 const WebSocket = require('ws');
 const messageSocket = require('./sockets/message');
+require('dotenv').config();
 
 function initializeWebSockets(server) {
     const wss = new WebSocket.Server({ server });
@@ -7,7 +8,7 @@ function initializeWebSockets(server) {
 
     wss.on('connection', (ws, req) => {
 
-        const gameId = new URL(req.url, 'http://localhost').searchParams.get('gameId');
+        const gameId = new URL(req.url, process.env.SOCKET_URL).searchParams.get('gameId');
         
         if (!gameId) {
             console.log('No gameId found in WebSocket request');
@@ -22,7 +23,6 @@ function initializeWebSockets(server) {
 
         ws.send(JSON.stringify({ type: 'init', payload: [] }));
 
-		// Socket Hooks
         ws.on('message', (message) => messageSocket.sendMessage(ws, message, gameId, gameConnections));
 
         ws.on('close', () => {

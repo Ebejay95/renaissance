@@ -1,17 +1,13 @@
 const { authRedirect } = require('./auth');
 const User = require('../models/user');
 const Game = require('../models/game');
-const Biom = require('../models/biom');
-const Misery = require('../models/misery');
-const Ship = require('../models/ship');
-const Troop = require('../models/troop');
-const Progress = require('../models/progress');
 const Message = require('../models/message');
 const BiomController = require('../controllers/biom');
 const Region = require('./region');
 const RegionController = require('../controllers/region');
 const MessageController = require('../controllers/message');
 const MiseryController = require('../controllers/misery');
+const CardController = require('../controllers/card');
 const ShipController = require('../controllers/ship');
 const TroopController = require('../controllers/troop');
 const ProgressController = require('../controllers/progress');
@@ -25,7 +21,6 @@ function formatGermanDate(date) {
 }
 function prepare_game_view(games) {
     const formatGame = (game) => {
-        // Convert Mongoose document to a plain JavaScript object
         let gameObj = game.toObject();
         gameObj.last_action_at = formatGermanDate(gameObj.last_action_at);
         gameObj.created_at = formatGermanDate(gameObj.created_at);
@@ -84,19 +79,15 @@ exports.getGame = async (req, res, next) => {
         const gameId = req.params.gameId;
         console.log('Rendering game page with gameId:', gameId);
 
-        // Spiel finden und User-Daten abrufen
         const game = await Game.findById(gameId).populate({
             path: 'users',
-            select: 'name email' // Wähle die Felder aus, die du brauchst
+            select: 'name email'
         });
         if (!game) {
             return res.redirect('/404');
         }
 
-        // Benutzer-Daten in `players` speichern
         const players = game.users;
-
-        // Nachrichten für dieses Spiel abrufen
         const messages = await Message.find({ game: gameId })
             .sort({ createdAt: 1 })
             .populate({
@@ -114,6 +105,7 @@ exports.getGame = async (req, res, next) => {
         const regions = await RegionController.getRegions(gameId);
         const bioms = await BiomController.getRevenueBioms(gameId);
         const miseries = await MiseryController.getMiseries(gameId);
+        const cards = await CardController.getCards(gameId);
         const ships = await ShipController.getShips(gameId);
         const troops = await TroopController.getTroops(gameId);
         const progresses = await ProgressController.getGroupedProgresses(gameId);
@@ -127,11 +119,12 @@ exports.getGame = async (req, res, next) => {
             regions: regions,
             bioms: bioms,
             miseries: miseries,
+            cards: cards,
             ships: ships,
             troops: troops,
             messages: messages,
             progresses: progresses,
-            players: players, // Hier fügen wir die Spieler hinzu
+            players: players,
             gameId: gameId
         };
 
@@ -150,10 +143,8 @@ exports.postGame = async (req, res, next) => {
     const { name, friends } = req.body;
     const userId = req.session.user._id;
     
-    // Convert friends to array if single value
     const selectedFriends = Array.isArray(friends) ? friends : [friends].filter(Boolean);
     
-    // Check minimum and maximum players
     if (!selectedFriends || selectedFriends.length < 2) {
         req.flash('error', 'Mindestens 2 Freunde müssen ausgewählt werden.');
         return res.redirect('/new-game');
@@ -165,37 +156,29 @@ exports.postGame = async (req, res, next) => {
     }
 
     try {
-        // Get all friend users
         const friendUsers = await User.find({ name: { $in: selectedFriends } });
         const friendIds = friendUsers.map(friend => friend._id);
         
-        // Get the creating user
         const currentUser = await User.findById(userId);
         
-        // Make all players mutual friends
         const updates = [];
         
-        // For each player (including friends)
         for (const playerId of friendIds) {
             const player = await User.findById(playerId);
             if (!player) continue;
             
-            // Make current user friend with player (if not already friends)
             if (!currentUser.friends.includes(playerId.toString())) {
                 currentUser.friends.push(playerId);
             }
             
-            // Make player friend with current user (if not already friends)
             if (!player.friends.includes(userId.toString())) {
                 player.friends.push(userId);
                 updates.push(player.save());
             }
             
-            // Make all other players mutual friends
             for (const otherPlayerId of friendIds) {
                 if (playerId.toString() === otherPlayerId.toString()) continue;
                 
-                // Add friend only if not already in the list
                 if (!player.friends.includes(otherPlayerId.toString())) {
                     player.friends.push(otherPlayerId);
                 }
@@ -208,11 +191,9 @@ exports.postGame = async (req, res, next) => {
             }
         }
         
-        // Save all user updates
         updates.push(currentUser.save());
         await Promise.all(updates);
         
-        // Create the game
         const game = new Game({
             name: name,
             state: 'new',
@@ -226,6 +207,7 @@ exports.postGame = async (req, res, next) => {
         await BiomController.createBioms(savedGame._id);
         await Region.createRegions(savedGame._id);
         await MiseryController.createMiseries(savedGame._id);
+        await CardController.createCards(savedGame._id);
         await ShipController.createShips(savedGame._id);
         await TroopController.createTroops(savedGame._id);
         await ProgressController.createProgresses(savedGame._id);
@@ -252,6 +234,7 @@ exports.deleteGame = async (req, res, next) => {
 
         await BiomController.deleteBiomsByGameId(gameId);
         await MiseryController.deleteMiseriesByGameId(gameId);
+        await CardController.deleteCardsByGameId(gameId);
         await ShipController.deleteShipsByGameId(gameId);
         await TroopController.deleteTroopsByGameId(gameId);
         await ProgressController.deleteProgressesByGameId(gameId);

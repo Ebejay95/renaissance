@@ -29,20 +29,20 @@ function addKeyupListener(selector, cb, buffertime) {
 
 function addFormMessage(input, text, state) {
     let name = input.getAttribute('name');
-    let statusSpan = document.createElement('span'); // Erstelle ein neues Span-Element
-    statusSpan.classList.add('input-message'); // Füge die Klasse 'input-message' hinzu
+    let statusSpan = document.createElement('span');
+    statusSpan.classList.add('input-message');
     if (state) {
-        statusSpan.classList.add(state); // Füge den Wert von 'state' als zusätzliche Klasse hinzu, falls vorhanden
+        statusSpan.classList.add(state);
     }
-    statusSpan.textContent = text; // Setze den Text des Spans
-    statusSpan.setAttribute('data-input-name', name); // Setze das Attribut 'data-input-name' als Verweis auf den Input
-    input.parentNode.insertBefore(statusSpan, input.nextSibling); // Füge das Span-Element direkt nach dem Eingabefeld ein
+    statusSpan.textContent = text;
+    statusSpan.setAttribute('data-input-name', name);
+    input.parentNode.insertBefore(statusSpan, input.nextSibling);
 }
 
 function removeFormMessage(input) {
     let name = input.getAttribute('name');
-    let statusSpan = input.parentNode.querySelector('.input-message[data-input-name="' + name + '"]'); // Finde das Span-Element mit der Klasse 'input-message' und dem passenden Attribut 'data-input-name'
+    let statusSpan = input.parentNode.querySelector('.input-message[data-input-name="' + name + '"]');
     if (statusSpan) {
-        statusSpan.remove(); // Entferne das Span-Element, falls vorhanden
+        statusSpan.remove();
     }
 }
