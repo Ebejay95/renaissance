@@ -1,8 +1,5 @@
 document.addEventListener('DOMContentLoaded', function(){
-	//document.getElementById('socketclick').addEventListener('click', function(){
-	//	console.log('schon')
-	//	socket.send('clicked_socket');
-	//})
+
 	
 	function proofUsername(usernameInput) {
 			var username = usernameInput.value;
@@ -22,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function(){
 				},
 				body: requestBody // Use the stringified JSON object here
 			}, function(err, res) {
-				console.log(res)
 				if(res == 'false'){
 					usernameInput.classList.add('error')
 					addFormMessage(usernameInput, 'Der Name darf nur kleine Buchstaben, Zahlen und Unterstriche enthalten.', 'error')

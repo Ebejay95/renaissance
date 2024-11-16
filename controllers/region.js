@@ -159,3 +159,7 @@ exports.getRegions = async (game_id) => {
         return null;
     }
 };
+
+exports.deleteRegionsByGameId = async (gameId) => {
+    return await Region.deleteMany({ game: gameId });
+};

@@ -16,6 +16,9 @@ const biomSchema = new Schema({
         required: true
     },
 	revenues: [Number],
+	epoch: {
+        type: String
+    },
 	availability: {
         type: String,
         required: true,

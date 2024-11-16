@@ -8,31 +8,28 @@
 				<a href="/logout" class="button">Logout</a>
 			</div>
 		</nav>
-
-		<div class="body-img-wrap">
-			<img class="body-img" src="/img/game.jpg"/>
-		</div>
 		<main>
 			<section>
 				<a href="/new-game" class="button">Neues Spiel</a>
-				<ul class="big-list flex col">
+				<ul class="list flex col">
 					<% games.forEach(function(game) { %>
-						<a href="/game/<%= game._id %>">
-							<li class="card flex align-center space-between">
-								<div>
-									<h4><%= game.name %></h4>
-								</div>
-								<div>
-									<%= game.state %>
-								</div>
-								<div>
-									<%= game.last_action_at %>
-								</div>
-							</li>
-						</a>
-						<form action="/game/restart/<%= game._id %>" method="post">
-							<input type="submit" value="Refresh">
-						</form>
+						<li>
+							<div>
+								<h4><%= game.name %></h4>
+							</div>
+							<div>
+								<%= game.state %>
+							</div>
+							<div>
+								<%= game.last_action_at %>
+							</div>
+							<div>
+								<a href="/game/<%= game._id %>" class="button">Öffnen</a>
+							</div>
+							<form action="/game/delete/<%= game._id %>" method="post" onsubmit="return confirm('Möchten Sie dieses Spiel wirklich löschen?');">
+								<button type="submit" class="button delete">Löschen</button>
+							</form>
+						</li>
 					<% }); %>
 				</ul>
 			</section>
@@ -41,9 +38,9 @@
 		<div class="body-img-wrap">
 			<img class="body-img" src="/img/login-screen.png"/>
 		</div>
-		<main>
+		<main class="light-main">
 			<div class="card auth-wrap">
-				<h1>Das Zeitalter der Renaissance</h1>
+				<h1 class="text-center">Das Zeitalter der Renaissance</h1>
 				<a class="button" href="/login">Starten</a>
 			</div>
 		</main>

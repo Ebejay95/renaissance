@@ -1,5 +1,5 @@
+// IMPORTS
 const path = require('path');
-
 const express = require('express');
 const flash = require('express-flash');
 const bodyParser = require('body-parser');
@@ -9,8 +9,10 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const errorController = require('./controllers/error');
 const User = require('./models/user');
 const WebSocket = require('ws')
+const initializeWebSockets = require('./app-socket');
 require('dotenv').config();
 
+// INITIALIZE
 const app = express();
 const store = new MongoDBStore({
   uri: process.env.MONGODB_URI,
@@ -20,10 +22,12 @@ const store = new MongoDBStore({
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
-//const adminRoutes = require('./routes/admin');
 const gameRoutes = require('./routes/game');
 const authRoutes = require('./routes/auth');
+const profileRoutes = require('./routes/profile');
+const messageRoutes = require('./routes/message');
 
+// USAGE
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(
@@ -47,32 +51,22 @@ app.use((req, res, next) => {
     .catch(err => console.log(err));
 });
 
-//app.use('/admin', adminRoutes);
 app.use(gameRoutes);
 app.use(authRoutes);
+app.use(profileRoutes);
+app.use(messageRoutes);
 
 app.use(errorController.get404);
 
+// RUN
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(result => {
 	const server = app.listen(3000, () => {
 		console.log('Express app listening on port 3000');
 	  });
-//// Create a WebSocket server
-//const wss = new WebSocket.Server({ server });
-//
-//// Handle WebSocket connections
-//wss.on('connection', function connection(ws) {
-//  ws.on('message', function incoming(message) {
-//    console.log('received: %s', message);
-//  });
-//  ws.on('clicked_socket', function incoming(message) {
-//    console.log('shit the socket was clicked!');
-//  });
-//
-//  ws.send('Hello, WebSocket client!');
-//});
+
+    const wss = initializeWebSockets(server);
   })
   .catch(err => {
     console.log(err);

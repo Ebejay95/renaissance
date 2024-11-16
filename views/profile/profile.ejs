@@ -1,0 +1,68 @@
+<%- include('../includes/head.ejs') %>
+
+	<% if (user) { %>
+		<nav class="flex">
+			<div>Hallo, <%= user.name %></div>
+			<div class="flex">
+				<a href="/" class="button">Spiele</a>
+				<a href="/logout" class="button">Logout</a>
+			</div>
+		</nav>
+		<main>
+			<section>
+				<div class="card">
+					<h1>Profil von <%= user.name %></h1>
+					<div>
+						<h2>Benutzername ändern</h2>
+						<form method="POST" action="/profile/update-username" class="form-control">
+							<input type="text" 
+								   name="newUsername" 
+								   placeholder="Neuer Benutzername" 
+								   pattern="[a-z0-9_]+" 
+								   title="Nur kleine Buchstaben, Zahlen und Unterstriche erlaubt"
+								   required>
+							<input type="submit" value="Ändern" class="button">
+						</form>
+					</div>
+					<div class="flex col">
+					<!-- Friend Management -->
+						<h2>Freunde</h2>
+						<div class="friend-search flex row">
+							<input type="text" 
+								   id="friendSearch" 
+								   placeholder="Freund suchen (Nutzername)" 
+								   >
+							<button onclick="searchFriend()" class="button">Suchen</button>
+						</div>
+			
+						<ul class="list">
+							<% if (friends && friends.length > 0) { %>
+								<% friends.forEach(friend => { %>
+									<li class="friend-item" id="friend-<%= friend._id %>">
+										<span><%= friend.name %></span>
+										<button onclick="removeFriend('<%= friend._id %>')" 
+											class="button button-small">Entfernen</button>
+									</li>
+								<% }); %>
+							<% } else { %>
+								<p>Noch keine Freunde hinzugefügt.</p>
+							<% } %>
+						</ul>
+					</div>
+				</div>
+			</section>
+		</main>
+	<% } else { %>
+		<div class="body-img-wrap">
+			<img class="body-img" src="/img/login-screen.png"/>
+		</div>
+		<main>
+			<div class="card auth-wrap">
+				<h1>Das Zeitalter der Renaissance</h1>
+				<a class="button" href="/login">Starten</a>
+			</div>
+		</main>
+	<% } %>
+
+<%- include('../includes/end.ejs') %>
+	

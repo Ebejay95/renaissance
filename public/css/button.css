@@ -1,0 +1,97 @@
+
+/* Button Styles */
+a.button, button,
+input[type=submit],
+button[type=submit] {
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: var(--sborder-radius);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+	background-color: rgba(200, 200, 200, 0.1);
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1), 
+		-1px -1px 1px white;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+    border: none;
+	user-select: none!important;
+	cursor: pointer;
+}
+
+a.button:not(:disabled):hover, button:not(:disabled):hover,
+input[type=submit]:not(:disabled):hover,
+button[type=submit]:not(:disabled):hover {
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1), 
+                -3px -3px 3px white;
+}
+
+a.button:not(:disabled):active, button:not(:disabled):active,
+input[type=submit]:not(:disabled):active,
+button[type=submit]:not(:disabled):active {
+	color: var(--primary-color);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1) inset, 
+                -3px -3px 3px white inset;
+}
+/* Button Group Styling */
+.btn-group {
+    display: flex;
+}
+
+.btn-group a.button, 
+.btn-group button,
+.btn-group input[type=submit],
+.btn-group button[type=submit] {
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: rgba(200, 200, 200, 0.1);
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1),
+                -1px -1px 1px white;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    user-select: none !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 0; /* Standardmäßig kein Radius */
+}
+
+.btn-group a.button:first-child,
+.btn-group button:first-child,
+.btn-group input[type=submit]:first-child,
+.btn-group button[type=submit]:first-child {
+    border-top-left-radius: var(--sborder-radius);
+    border-bottom-left-radius: var(--sborder-radius);
+}
+
+.btn-group a.button:last-child,
+.btn-group button:last-child,
+.btn-group input[type=submit]:last-child,
+.btn-group button[type=submit]:last-child {
+    border-top-right-radius: var(--sborder-radius);
+    border-bottom-right-radius: var(--sborder-radius);
+}
+
+/* Hover State */
+.btn-group a.button:not(:disabled):hover,
+.btn-group button:not(:disabled):hover,
+.btn-group input[type=submit]:not(:disabled):hover,
+.btn-group button[type=submit]:not(:disabled):hover {
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1),
+                -3px -3px 3px white;
+}
+
+/* Active State */
+.btn-group a.button:not(:disabled):active,
+.btn-group button:not(:disabled):active,
+.btn-group input[type=submit]:not(:disabled):active,
+.btn-group button[type=submit]:not(:disabled):active,
+.btn-group a.button:not(:disabled).active,
+.btn-group button:not(:disabled).active,
+.btn-group input[type=submit]:not(:disabled).active,
+.btn-group button[type=submit]:not(:disabled).active {
+    color: var(--primary-color);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1) inset,
+                -3px -3px 3px white inset;
+}

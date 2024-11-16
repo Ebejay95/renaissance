@@ -1,0 +1,4 @@
+.friend-search input {
+	width: 100%; /* oder eine spezifische Breite wie 300px */
+	flex: 1; /* lässt das Input-Feld den verfügbaren Platz einnehmen */
+  }

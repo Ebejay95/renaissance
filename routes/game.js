@@ -12,6 +12,6 @@ router.get('/new-game', gameController.getNewGameRoom);
 router.post('/new-game', gameController.postGame);
 
 router.get('/game/:gameId', gameController.getGame);
-router.post('/game/restart/:gameId', gameController.restartGame);
+router.post('/game/delete/:gameId', gameController.deleteGame);
 
 module.exports = router;

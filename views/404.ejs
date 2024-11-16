@@ -2,7 +2,14 @@
 </head>
 
 <body>
-    <%- include('includes/navigation.ejs') %>
+	<nav class="flex">
+		<div>Hallo, <%= user.name %></div>
+		<div class="flex">
+			<a href="/" class="button">Spiele</a>
+			<a href="/profile" class="button">Profil</a>
+			<a href="/logout" class="button">Logout</a>
+		</div>
+	</nav>
     <h1>Page Not Found!</h1>
 
 <%- include('includes/end.ejs') %>

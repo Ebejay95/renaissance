@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
-
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -18,7 +16,11 @@ const userSchema = new Schema({
         type: String
     },
     resetToken: String,
-    resetTokenExpiration: Date
+    resetTokenExpiration: Date,
+    friends: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }]
 });
 
 module.exports = mongoose.model('User', userSchema);
