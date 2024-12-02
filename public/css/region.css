@@ -1,0 +1,98 @@
+
+svg {
+	pointer-events: none;
+}
+svg path{
+	pointer-events: all;
+	z-index: 1;
+}
+/*svg:not([data-biom=zone]) path:hover{*/
+/*	pointer-events: all;*/
+/*	stroke: #fff;*/
+/*	z-index: 3;*/
+/*}*/
+
+.region {
+	position: absolute;
+	pointer-events: none;
+}
+
+.region-wrap {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+}
+.region-wrap svg{
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+}
+
+[data-biom="coast"] .region-interface,[data-biom="zone"] .region-interface,[data-biom="sea"] .region-interface {
+	display: none;
+}
+
+.region-interface {
+	font-size: 4px;
+	user-select: none;
+	pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+	z-index: 4;
+}
+
+.region-attack-value {
+    width: 4px;
+    height: 4px;
+    font-size: 3px;
+    background-color: white;
+    color: black;
+    border: 0.01em solid black;
+    border-radius: 50%;
+    pointer-events: none;
+    text-align: center;
+	margin-left: 2px;
+	margin-bottom: 1px;
+    line-height: 5px;
+	font-weight: 800;
+	user-select: none;
+}
+
+[data-biom="supporter"] .full-troop-container {
+	display: none;
+}
+.full-troop-container {
+    width: 8px;
+    height: 8px;
+	background-color: rgba(255,255,255,0.1);
+    border: 0.01em solid rgba(255, 255, 255, 0.429);
+    border-radius: 50%;
+    pointer-events: none;
+    text-align: center;
+	user-select: none;
+}
+.partial-troop-container {
+    width: 4px;
+    height: 4px;
+	background-color: rgba(255,255,255,0.1);
+    border: 0.01em solid rgba(255, 255, 255, 0.429);
+    pointer-events: none;
+    text-align: center;
+	user-select: none;
+}
+.region:not([data-biom="supporter"]) .partial-troop-container {
+    transform: translate(12px, -8px);
+}
+.region[data-biom="supporter"] .partial-troop-container {
+    transform: translate(2px, 0px);
+}
+/*
+<div class="region-interface"><div class="full-troop-container"></div><div class="partial-troop-container"></div><div class="region-attack-value">${this.attackValue}</div></div>
+*/

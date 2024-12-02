@@ -25,6 +25,14 @@ const regionSchema = new Schema({
     size: Number,
     zone: Number,
     attackValue: Number,
+	transX: {
+		type: Number,
+		default: 0
+	},
+	transY: {
+		type: Number,
+		default: 0
+	},
     coasts: [{
         type: Schema.Types.ObjectId,
         ref: 'Region'
@@ -49,13 +57,19 @@ const regionSchema = new Schema({
 
 regionSchema.methods.updateSVG = async function() {
     try {
+		let transferX = ((50) + this.transX)
+		let transferY = ((50) + this.transY)
+		console.log(this.name, ' ', this.transX, ' ', this.transY, ' - ', transferX, ' ', transferY)
         const svgPath = path.join(__dirname, '../public/svgs/', this.className + '.svg');
         const svgText = await fs.promises.readFile(svgPath, 'utf8'); 
-        const styleStr = `id="${this.className}" data-biom="${this.biom.className}" style="width: ${this.size}%; left: ${this.x}%; top: ${this.y}%;transform: rotate(${this.deg}deg);"`;
+        const svgStyleStr = `style="width: 100%;"`;
+        const divStyleStr = `id="${this.className}" class="region" data-biom="${this.biom.className}" data-zone="${this.zone}" data-attackValue="${this.attackValue}" style="width: ${this.size}%; left: ${this.x}%; top: ${this.y}%;transform: rotate(${this.deg}deg);"`;
         const pathStr = `fill="${this.biom.color}"`;
-        let updatedSvgText = svgText.replace(/<svg /, `<svg ${styleStr} `);
+        const regionInterface = `<div class="region-interface" style="transform: translate(-${transferX}%, -${transferY}%);"><div class="region-title">${this.name}</div><div class="region-attack-value">${this.attackValue}</div><div class="full-troop-container"></div><div class="partial-troop-container"></div></div>`;
+        let updatedSvgText = svgText.replace(/<svg /, `<svg ${svgStyleStr} `);
 		updatedSvgText = updatedSvgText.replace('fill="none"', pathStr);
-        this.svgPath = updatedSvgText;
+		const divText = `<div ${divStyleStr}><div class="region-wrap">${regionInterface}${updatedSvgText}</div></div>`
+        this.svgPath = divText;
         await this.save();
     } catch (err) {
         console.error("Fehler beim Lesen der Datei:", err);

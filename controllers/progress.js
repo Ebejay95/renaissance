@@ -3,7 +3,7 @@ const ProgressController = require('../controllers/progress');
 
 exports.createProgresses = async (game_id) => {
     const progressData = [
-        { letter: "A", name: "Sternenkunde", desciption:"Ermöglicht die Überquerung eriners Meerfeldes als ob es sich um eine Küstenregion handelt. Veringert die Auswirkung von Mystizismus.", cost: 30, discount: 20, group: "Wissenschaft", dependencies: [], effects: ["reduceMystic", "crossOneSea"], game: game_id },
+        { letter: "A", name: "Sternenkunde", description:"Ermöglicht die Überquerung eriners Meerfeldes als ob es sich um eine Küstenregion handelt. Veringert die Auswirkung von Mystizismus.", cost: 30, discount: 20, group: "Wissenschaft", dependencies: [], effects: ["reduceMystic", "crossOneSea"], game: game_id },
         { letter: "B", name: "Anatomie", description: "Verringert den Elendsindex um eine Stufe. Veringert die Auswirkung von Mystizismus.", cost: 60, discount: 20, group: "Wissenschaft", dependencies: [], effects: ["discMisery", "reduceMystic"], game: game_id },
         { letter: "C", name: "Materialkunde", description: "Hebt die Auswirkung von Alchimie auf. Veringert die Auswirkung von Mystizismus.", cost: 90, discount: 20, group: "Wissenschaft", dependencies: [], effects: ["blockAlchimy", "reduceMystic"], game: game_id },
         { letter: "D", name: "Materialkunde",  description: "In der Einkommensphase wird der Elensindex um eine Stufe verbessert. Veringert die Auswirkung von Mystizismus.", cost: 120, discount: 20, group: "Wissenschaft", dependencies: [], effects: ["discMiseryLoop", "reduceMystic"], game: game_id },

@@ -1,30 +1,53 @@
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function () {
+    const mapWrapper = document.getElementById('mapwrap');
+    const map = document.getElementById('map');
     let isDragging = false;
     let startX, startY;
-    let lastX = 0, lastY = 0;
-    const map = document.getElementById('map');
-    let zoomLevel = 1;
-    const zoomSpeed = 0.05;
-    const maxZoom = 2;
-    const minZoom = 0.8;
 
+    // Transformation-State
+    let transform = {
+        x: 0,
+        y: 0,
+        scale: 1
+    };
+
+    const updateTransform = () => {
+        // Begrenzungen berechnen
+        const rect = mapWrapper.getBoundingClientRect();
+        const mapWidth = map.offsetWidth * transform.scale;
+        const mapHeight = map.offsetHeight * transform.scale;
+
+        const maxX = Math.max((rect.width - mapWidth) / 2, 0);
+        const maxY = Math.max((rect.height - mapHeight) / 2, 0);
+
+        const minX = rect.width - mapWidth - maxX;
+        const minY = rect.height - mapHeight - maxY;
+
+        // Position begrenzen
+        transform.x = Math.min(Math.max(transform.x, minX), maxX);
+        transform.y = Math.min(Math.max(transform.y, minY), maxY);
+
+        map.style.transform = `translate(${transform.x}px, ${transform.y}px) scale(${transform.scale})`;
+    };
+
+    // Mouse-down: Start des Dragging
     map.addEventListener('mousedown', (e) => {
         isDragging = true;
-        startX = e.pageX - map.offsetLeft - lastX;
-        startY = e.pageY - map.offsetTop - lastY;
+        startX = e.clientX - transform.x;
+        startY = e.clientY - transform.y;
         map.style.cursor = 'grabbing';
     });
 
+    // Mouse-move: Karte bewegen
     document.addEventListener('mousemove', (e) => {
         if (isDragging) {
-            const x = e.pageX - startX;
-            const y = e.pageY - startY;
-            lastX = x;
-            lastY = y;
-            updateTransform(x, y);
+            transform.x = e.clientX - startX;
+            transform.y = e.clientY - startY;
+            updateTransform();
         }
     });
 
+    // Mouse-up: Dragging beenden
     document.addEventListener('mouseup', () => {
         if (isDragging) {
             isDragging = false;
@@ -32,43 +55,33 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     });
 
-    function zoomIn() {
-        if (zoomLevel < maxZoom) {
-            zoomLevel += zoomSpeed;
-            updateTransform(lastX, lastY);
-        }
-    }
+    // Zoom-Funktionalität
+    mapWrapper.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        
+        // Mausposition relativ zur Karte
+        const rect = mapWrapper.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
 
-    function zoomOut() {
-        if (zoomLevel > minZoom) {
-            zoomLevel -= zoomSpeed;
-            updateTransform(lastX, lastY);
-        }
-    }
+        // Zoom-Faktor (verringert/erhöht je nach Scroll-Richtung)
+        const zoomFactor = e.deltaY > 0 ? 0.9 : 1.1;
 
-    function updateTransform(x, y) {
-        map.style.transform = `translate(${x}px, ${y}px) scale(${zoomLevel})`;
-    }
+        // Neue Scale berechnen und begrenzen
+        const newScale = Math.min(Math.max(transform.scale * zoomFactor, 0.5), 5);
 
-    document.getElementById('zoomInBtn').addEventListener('click', zoomIn);
-    document.getElementById('zoomOutBtn').addEventListener('click', zoomOut);
+        // Zoom-Position berechnen
+        const scaleChange = newScale - transform.scale;
+        transform.x -= (mouseX - transform.x) * (scaleChange / transform.scale);
+        transform.y -= (mouseY - transform.y) * (scaleChange / transform.scale);
+        transform.scale = newScale;
 
-    document.getElementById('map').addEventListener('wheel', (event) => {
-        event.preventDefault();
-        const rect = map.getBoundingClientRect();
-        const mouseX = event.clientX - rect.left;
-        const mouseY = event.clientY - rect.top;
+        updateTransform();
+    }, { passive: false });
 
-        const scaleFactor = (event.deltaY < 0) ? (1 + zoomSpeed) : (1 - zoomSpeed);
-        const newZoomLevel = zoomLevel * scaleFactor;
+    // Initialer Cursor setzen
+    map.style.cursor = 'grab';
 
-        if (newZoomLevel >= minZoom && newZoomLevel <= maxZoom) {
-            zoomLevel = newZoomLevel;
-            const newLastX = mouseX * (1 - scaleFactor) + lastX * scaleFactor;
-            const newLastY = mouseY * (1 - scaleFactor) + lastY * scaleFactor;
-            lastX = newLastX;
-            lastY = newLastY;
-            updateTransform(newLastX, newLastY);
-        }
-    });
+    // Initiale Begrenzungen anwenden
+    updateTransform();
 });

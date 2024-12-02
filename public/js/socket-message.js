@@ -17,20 +17,20 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateStatus(message, type = 'info') {
         if (gameStatus) {
             gameStatus.textContent = message;
-            gameStatus.classList.remove('text-gray-500', 'text-green-500', 'text-red-500', 'text-yellow-500');
+            gameStatus.classList.remove('error', 'success');
             
             switch(type) {
                 case 'success':
-                    gameStatus.classList.add('text-green-500');
+                    gameStatus.classList.add('success');
                     break;
                 case 'error':
-                    gameStatus.classList.add('text-red-500');
+                    gameStatus.classList.add('error');
                     break;
                 case 'warning':
-                    gameStatus.classList.add('text-yellow-500');
+                    gameStatus.classList.add('error');
                     break;
                 default:
-                    gameStatus.classList.add('text-gray-500');
+                    gameStatus.classList.add('success');
             }
         }
     }

@@ -1,6 +1,6 @@
 
 #mapwrap {
-	max-width: 800px;
+	max-width: 1200px;
 	margin: auto;
 	border: 8px solid rgb(210, 159, 8);
 	background-color: #001c7f;
@@ -13,20 +13,4 @@
     aspect-ratio: 20 / 17;
     transform-origin: 0 0; /* Zoomt von der oberen linken Ecke */
     transition: transform 0.2s; /* Glattes Zoomen */
-}
-
-svg {
-	pointer-events: none;
-}
-svg path{
-	pointer-events: all;
-	z-index: 1;
-}
-/*svg:not([data-biom=zone]) path:hover{*/
-/*	pointer-events: all;*/
-/*	stroke: #fff;*/
-/*	z-index: 3;*/
-/*}*/
-#map svg {
-	position: absolute;
 }

@@ -10,6 +10,45 @@
 		<div id="ducats">
 			<label><i class="fa-solid fa-sack-dollar"></i></i> 251</label>
 		</div>
+		<div id="dices">
+			<% dices.forEach(function(dice) { %>
+				<div class="dice <%= dice.name %>" data-value="<%= dice.value %>" style="background-color: <%= dice.color %>;">
+					<div class="dice-side one">
+						<div class="dot" style="background-color: <%= dice.dotColor %>;"></div>
+					</div>
+					<div class="dice-side two">
+						<div class="dot" style="background-color: <%= dice.dotColor %>;"></div>
+						<div class="dot" style="background-color: <%= dice.dotColor %>;"></div>
+					</div>
+					<div class="dice-side three">
+						<div class="dot" style="background-color: <%= dice.dotColor %>;"></div>
+						<div class="dot" style="background-color: <%= dice.dotColor %>;"></div>
+						<div class="dot" style="background-color: <%= dice.dotColor %>;"></div>
+					</div>
+					<div class="dice-side four">
+						<div class="dot" style="background-color: <%= dice.dotColor %>;"></div>
+						<div class="dot" style="background-color: <%= dice.dotColor %>;"></div>
+						<div class="dot" style="background-color: <%= dice.dotColor %>;"></div>
+						<div class="dot" style="background-color: <%= dice.dotColor %>;"></div>
+					</div>
+					<div class="dice-side five">
+						<div class="dot" style="background-color: <%= dice.dotColor %>;"></div>
+						<div class="dot" style="background-color: <%= dice.dotColor %>;"></div>
+						<div class="dot" style="background-color: <%= dice.dotColor %>;"></div>
+						<div class="dot" style="background-color: <%= dice.dotColor %>;"></div>
+						<div class="dot" style="background-color: <%= dice.dotColor %>;"></div>
+					</div>
+					<div class="dice-side six">
+						<div class="dot" style="background-color: <%= dice.dotColor %>;"></div>
+						<div class="dot" style="background-color: <%= dice.dotColor %>;"></div>
+						<div class="dot" style="background-color: <%= dice.dotColor %>;"></div>
+						<div class="dot" style="background-color: <%= dice.dotColor %>;"></div>
+						<div class="dot" style="background-color: <%= dice.dotColor %>;"></div>
+						<div class="dot" style="background-color: <%= dice.dotColor %>;"></div>
+					</div>
+				</div>
+			<% }); %>
+		</div>
 		<div class="game-rounds">
 			<div class="round-count">2/13</div>
 			<div class="round-phase first" data-tooltip="Expansion kaufen"><i class="fa-solid fa-coins"></i></div>

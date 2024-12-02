@@ -8,6 +8,7 @@ const RegionController = require('../controllers/region');
 const MessageController = require('../controllers/message');
 const MiseryController = require('../controllers/misery');
 const CardController = require('../controllers/card');
+const DiceController = require('../controllers/dice');
 const ShipController = require('../controllers/ship');
 const TroopController = require('../controllers/troop');
 const ProgressController = require('../controllers/progress');
@@ -105,7 +106,8 @@ exports.getGame = async (req, res, next) => {
         const regions = await RegionController.getRegions(gameId);
         const bioms = await BiomController.getRevenueBioms(gameId);
         const miseries = await MiseryController.getMiseries(gameId);
-        const cards = await CardController.getCards(gameId);
+        const cards = await CardController.getCards(gameId);;
+        const dices = await DiceController.getDices(gameId);
         const ships = await ShipController.getShips(gameId);
         const troops = await TroopController.getTroops(gameId);
         const progresses = await ProgressController.getGroupedProgresses(gameId);
@@ -120,6 +122,7 @@ exports.getGame = async (req, res, next) => {
             bioms: bioms,
             miseries: miseries,
             cards: cards,
+            dices: dices,
             ships: ships,
             troops: troops,
             messages: messages,
@@ -208,6 +211,7 @@ exports.postGame = async (req, res, next) => {
         await Region.createRegions(savedGame._id);
         await MiseryController.createMiseries(savedGame._id);
         await CardController.createCards(savedGame._id);
+        await DiceController.createDices(savedGame._id);
         await ShipController.createShips(savedGame._id);
         await TroopController.createTroops(savedGame._id);
         await ProgressController.createProgresses(savedGame._id);
@@ -235,6 +239,7 @@ exports.deleteGame = async (req, res, next) => {
         await BiomController.deleteBiomsByGameId(gameId);
         await MiseryController.deleteMiseriesByGameId(gameId);
         await CardController.deleteCardsByGameId(gameId);
+        await DiceController.deleteDicesByGameId(gameId);
         await ShipController.deleteShipsByGameId(gameId);
         await TroopController.deleteTroopsByGameId(gameId);
         await ProgressController.deleteProgressesByGameId(gameId);
