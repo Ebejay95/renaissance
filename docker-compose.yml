@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  ubuntu-valgrind:
+    container_name: webserv
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/app
+    stdin_open: true
+    tty: true

@@ -1,84 +1,93 @@
+.card-hand {
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+	position: relative;
+	margin: 0 auto;
+	width: auto;
+	height: auto;
+	min-width: 300px;
+	width: 100%;
+	display: flex;
+	fex-direction: column;
+	justify-content: space-around;
+	border: 1px solid rgba(0, 0, 0, .2);
+}
 
-	
-	.card-hand {
-		display:inline-block;
-		padding:0;
-		margin:0;
-		position:relative;
-	 	 margin:0 auto;
-		width:auto;
-		height:auto;
-		min-width:300px;
-		width:100%;
-		display:flex;
-		fex-direction: column;
-		justify-content:space-around;
-		border:1px solid rgba(0,0,0,.2);
-	}
-		
-	
-	.card {
-		float:right;
-		width:200px;
-		height:300px;
-	
-		margin:20px 10px;
-		background:white;
-		padding:10px 20px;
-		color:black;
-		border:1px solid rgba(100,100,100,.1);
-		position: relative;
-	
-	
-		border-radius:6px;
-		box-shadow: 1px 3px 20px rgba(0,0,0,.1);
 
-	}
-	
-	
-	  
-	/*we put this in here to overwrite the previous rule ... */	
-	.card-hand {
-		display:block;
-		border:none;
-		margin-left:-200px;
-	}	
-	
-	
-	.card-hand {
-		display: block;
-		border: none;
-		margin-left: auto;
-		width: max-content;
-		margin-right: auto;
-	}	
-	
+.card {
+	float: right;
+	width: 200px;
+	height: 300px;
+	overflow: hidden;
+	margin: 20px 10px;
+	background: white;
+	padding: 0px;
+	color: black;
+	border: 1px solid rgba(100, 100, 100, .1);
+	position: relative;
 
-	.card-hand .card {
-		margin-right:-120px;
-		display:inline-block;
-		position:relative;
-		text-align:right;
-		transition:transform .4s ease-out;
-	
-	}
-	.card-hand .card button {
-		opacity: 0;
-		pointer-events: none;
-		transition:opacity .4s ease-out;
-	}
-	
-	.card-hand .card:hover button{
-		opacity: 1;
-		pointer-events: all;
-		
-	}	
-	.card-hand .card:hover {
-		cursor:pointer;
-		transform: translate(10%, -35%) rotate(-5deg);
-		transform-origin:bottom right;
-		
-	}	
+
+	border-radius: 18px;
+	box-shadow: 1px 3px 20px rgba(0, 0, 0, .1);
+
+}
+
+
+.card img {
+	position: absolute;
+	top: -1%;
+	left: -1%;
+	width: 102%;
+	height: 102%;
+}
+
+/*we put this in here to overwrite the previous rule ... */
+.card-hand {
+	display: block;
+	border: none;
+	margin-left: -200px;
+}
+
+.card-hand {
+	display: block;
+	border: none;
+	margin-left: auto;
+	width: max-content;
+	margin-right: auto;
+}
+
+
+.card-hand .card {
+	margin-right: -120px;
+	display: inline-block;
+	position: relative;
+	text-align: right;
+	transition: transform .4s ease-out;
+
+}
+
+.card-hand .card button {
+	opacity: 0;
+	z-index: 5;
+	position: relative;
+	pointer-events: none;
+	transition: opacity .4s ease-out;
+}
+
+.card-hand .card:hover button {
+	opacity: 1;
+	pointer-events: all;
+
+}
+
+.card-hand .card:hover {
+	cursor: pointer;
+	transform: translate(10%, -35%) rotate(-5deg);
+	transform-origin: bottom right;
+
+}
+
 #players-hand {
 	box-sizing: border-box;
 	margin-top: -120px;
@@ -88,6 +97,7 @@
 	overflow-y: auto;
 	position: relative;
 }
+
 #players-hand::after {
 	content: "";
 	display: block;
@@ -98,4 +108,3 @@
 	height: 30%;
 	z-index: 1;
 }
-	
