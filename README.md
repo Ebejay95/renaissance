@@ -22,3 +22,18 @@ EMAIL_PASSWORD=
 # Sicherheit
 BCRYPT_SALT_ROUNDS=
 ```
+
+
+## For a freind, to deal with this :) :
+### Use git
+```
+
+npm run start
+```
+
+### Launch Application
+```
+make container
+npm run start
+```
+
