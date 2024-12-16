@@ -37,62 +37,162 @@ svg path{
 }
 
 .region-interface {
-	font-size: 4px;
+	font-size: 20px;
 	user-select: none;
 	pointer-events: none;
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 30px;
-    height: 30px;
+    width: 90px;
+    height: 90px;
 	z-index: 4;
 }
 
 .region-attack-value {
-    width: 4px;
-    height: 4px;
-    font-size: 3px;
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
     background-color: white;
     color: black;
     border: 0.01em solid black;
     border-radius: 50%;
     pointer-events: none;
     text-align: center;
-	margin-left: 2px;
-	margin-bottom: 1px;
-    line-height: 5px;
+	margin-left: 4px;
+	margin-bottom: 2px;
+    line-height: 20px;
 	font-weight: 800;
 	user-select: none;
 }
 
-[data-biom="supporter"] .full-troop-container {
+[data-biom="supporter"] .full-property-container {
 	display: none;
 }
-.full-troop-container {
-    width: 8px;
-    height: 8px;
+.full-property-container {
+    width: 50px;
+    height: 50px;
 	background-color: rgba(255,255,255,0.1);
     border: 0.01em solid rgba(255, 255, 255, 0.429);
     border-radius: 50%;
     pointer-events: none;
     text-align: center;
 	user-select: none;
+	position: relative;
 }
-.partial-troop-container {
-    width: 4px;
-    height: 4px;
+.full-property-container img{
+	position: absolute;
+	display: none;
+	top: 0;
+	left: 0;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+.partial-property-container {
+    width: 24px;
+    height: 24px;
 	background-color: rgba(255,255,255,0.1);
     border: 0.01em solid rgba(255, 255, 255, 0.429);
     pointer-events: none;
     text-align: center;
 	user-select: none;
+	position: relative;
 }
-.region:not([data-biom="supporter"]) .partial-troop-container {
-    transform: translate(12px, -8px);
+.partial-property-container img{
+	display: none;
+	top: 0;
+	left: 0;
+    width: 24px;
+    height: 24px;
 }
-.region[data-biom="supporter"] .partial-troop-container {
-    transform: translate(2px, 0px);
+.region:not([data-biom="supporter"]) .partial-property-container {
+    transform: translate(65px, -40px);
 }
-/*
-<div class="region-interface"><div class="full-troop-container"></div><div class="partial-troop-container"></div><div class="region-attack-value">${this.attackValue}</div></div>
-*/
+.region[data-biom="supporter"] .partial-property-container {
+    transform: translate(4px, 4px);
+}
+
+/* Standard-Stil für die Bilder */
+.partial-property-container img {
+    display: none; /* Versteckt standardmäßig alle Bilder */
+}
+
+/* Sichtbarkeit basierend auf Attributen */
+.region[data-venezia]:has([class~="venezia"]) .partial-property-container img.venezia {
+    display: block;
+}
+
+.region[data-paris]:has([class~="paris"]) .partial-property-container img.paris {
+    display: block;
+}
+
+.region[data-genoa]:has([class~="genua"]) .partial-property-container img.genua {
+    display: block;
+}
+
+.region[data-hamburg]:has([class~="hamburg"]) .partial-property-container img.hamburg {
+    display: block;
+}
+
+.region[data-barcelona]:has([class~="barcelona"]) .partial-property-container img.barcelona {
+    display: block;
+}
+
+.region[data-london]:has([class~="london"]) .partial-property-container img.london {
+    display: block;
+}
+
+/* Zahlenanzeige mit Pseudoelementen */
+.partial-property-container::after {
+    content: ''; /* Standardwert */
+    display: none; /* Unsichtbar, wenn nicht zutreffend */
+    position: absolute;
+    bottom: -8px;
+    right: -8px;
+    background-color: white;
+    color: black;
+    font-size: 12px;
+    font-weight: bold;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid black;
+    line-height: 18px;
+    text-align: center;
+}
+
+/* Dynamisch für Venezia */
+.region[data-venezia] .partial-property-container::after {
+    display: block;
+    content: attr(data-venezia);
+}
+
+/* Dynamisch für Paris */
+.region[data-paris] .partial-property-container::after {
+    display: block;
+    content: attr(data-paris);
+}
+
+/* Dynamisch für Genoa */
+.region[data-genoa] .partial-property-container::after {
+    display: block;
+    content: attr(data-genoa);
+}
+
+/* Dynamisch für Hamburg */
+.region[data-hamburg] .partial-property-container::after {
+    display: block;
+    content: attr(data-hamburg);
+}
+
+/* Dynamisch für Barcelona */
+.region[data-barcelona] .partial-property-container::after {
+    display: block;
+    content: attr(data-barcelona);
+}
+
+/* Dynamisch für London */
+.region[data-london] .partial-property-container::after {
+    display: block;
+    content: attr(data-london);
+}

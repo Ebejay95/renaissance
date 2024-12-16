@@ -9,8 +9,9 @@ const MessageController = require('../controllers/message');
 const MiseryController = require('../controllers/misery');
 const CardController = require('../controllers/card');
 const DiceController = require('../controllers/dice');
+const PartyController = require('../controllers/party');
 const ShipController = require('../controllers/ship');
-const TroopController = require('../controllers/troop');
+const PropertyController = require('../controllers/property');
 const ProgressController = require('../controllers/progress');
 
 function formatGermanDate(date) {
@@ -78,7 +79,6 @@ exports.getGame = async (req, res, next) => {
         await authRedirect(req, res, next);
         const user = await User.findById(req.session.user._id).populate('friends');
         const gameId = req.params.gameId;
-        console.log('Rendering game page with gameId:', gameId);
 
         const game = await Game.findById(gameId).populate({
             path: 'users',
@@ -108,8 +108,9 @@ exports.getGame = async (req, res, next) => {
         const miseries = await MiseryController.getMiseries(gameId);
         const cards = await CardController.getCards(gameId);;
         const dices = await DiceController.getDices(gameId);
+        const parties = await PartyController.getParties(gameId);
         const ships = await ShipController.getShips(gameId);
-        const troops = await TroopController.getTroops(gameId);
+        const propertys = await PropertyController.getpropertys(gameId);
         const progresses = await ProgressController.getGroupedProgresses(gameId);
 
         const templateData = {
@@ -124,7 +125,8 @@ exports.getGame = async (req, res, next) => {
             cards: cards,
             dices: dices,
             ships: ships,
-            troops: troops,
+            parties: parties,
+            propertys: propertys,
             messages: messages,
             progresses: progresses,
             players: players,
@@ -207,14 +209,23 @@ exports.postGame = async (req, res, next) => {
         });
         
         const savedGame = await game.save();
-        await BiomController.createBioms(savedGame._id);
-        await Region.createRegions(savedGame._id);
-        await MiseryController.createMiseries(savedGame._id);
-        await CardController.createCards(savedGame._id);
-        await DiceController.createDices(savedGame._id);
-        await ShipController.createShips(savedGame._id);
-        await TroopController.createTroops(savedGame._id);
-        await ProgressController.createProgresses(savedGame._id);
+        
+        // Create base game elements
+        await Promise.all([
+            BiomController.createBioms(savedGame._id),
+            MiseryController.createMiseries(savedGame._id),
+            CardController.createCards(savedGame._id),
+            DiceController.createDices(savedGame._id),
+            ShipController.createShips(savedGame._id),
+            PropertyController.createpropertys(savedGame._id),
+            ProgressController.createProgresses(savedGame._id)
+        ]);
+
+        // Create parties first and wait for completion
+        await PartyController.createParties(savedGame._id);
+        
+        // Now create regions after parties are created
+        await RegionController.createRegions(savedGame._id);
         
         req.flash('success', 'Spiel erfolgreich erstellt.');
         res.redirect('/');
@@ -241,7 +252,8 @@ exports.deleteGame = async (req, res, next) => {
         await CardController.deleteCardsByGameId(gameId);
         await DiceController.deleteDicesByGameId(gameId);
         await ShipController.deleteShipsByGameId(gameId);
-        await TroopController.deleteTroopsByGameId(gameId);
+        await PartyController.deletePartiesByGameId(gameId);
+        await PropertyController.deletepropertysByGameId(gameId);
         await ProgressController.deleteProgressesByGameId(gameId);
         await RegionController.deleteRegionsByGameId(gameId);
         await MessageController.deleteMessagesByGameId(gameId);

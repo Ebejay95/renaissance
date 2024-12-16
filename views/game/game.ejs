@@ -4,8 +4,16 @@
 	<button style="display:none;" id="zoomOutBtn">Zoom Out</button>
 
 	<main>
-		<nav class="flex">
-			<a href="/" class="button"><i class="fa-solid fa-x"></i></a>
+
+		<div id="mapwrap">
+			<div id="map">
+				<% regions.forEach(function(region) { %>
+					<%- region.svgPath %>
+						<% }); %>
+			</div>
+		</div>
+		<a id="back-button" href="/" class="button"><i class="fa-solid fa-x"></i></a>
+		<nav id="game-nav">
 			<img class="party-badge" src="/img/paris-badge.jpg" />
 			<div id="ducats">
 				<label><i class="fa-solid fa-sack-dollar"></i></i> 251</label>
@@ -52,44 +60,43 @@
 			</div>
 			<div class="game-rounds">
 				<div class="round-count">2/13</div>
-				<div class="round-phase first" data-tooltip="Expansion kaufen"><i class="fa-solid fa-coins"></i></div>
-				<div class="round-phase" data-tooltip="Mangel/Überfluss beinflussen"><i class="fa-solid fa-up-down"></i>
+				<div class="round-phase first" data-tooltip="Expansion kaufen" data-tooltip-position="bottom"><i class="fa-solid fa-coins"></i></div>
+				<div class="round-phase" data-tooltip="Mangel/Überfluss beinflussen" data-tooltip-position="bottom"><i class="fa-solid fa-up-down"></i>
 				</div>
-				<div class="round-phase" data-tooltip="Mühlen"><i class="fa-solid fa-house-circle-xmark"></i></div>
-				<div class="round-phase" data-tooltip="Karten ziehen und kaufen"><i class="fa-solid fa-layer-group"></i>
+				<div class="round-phase" data-tooltip="Mühlen" data-tooltip-position="bottom"><i class="fa-solid fa-house-circle-xmark"></i></div>
+				<div class="round-phase" data-tooltip="Karten ziehen und kaufen" data-tooltip-position="bottom"><i class="fa-solid fa-layer-group"></i>
 				</div>
-				<div class="round-phase" data-tooltip="Karten spielen und ablegen"><i class="fa-solid fa-hand"></i>
+				<div class="round-phase" data-tooltip="Karten spielen und ablegen" data-tooltip-position="bottom"><i class="fa-solid fa-hand"></i>
 				</div>
-				<div class="round-phase" data-tooltip="Fortschritte kaufen, Schiffe, stabilisieren"><i
+				<div class="round-phase" data-tooltip="Fortschritte kaufen, Schiffe, stabilisieren" data-tooltip-position="bottom"><i
 						class="fa-solid fa-comment-dollar"></i></div>
-				<div class="round-phase" data-tooltip="Expansionsphase"><i
+				<div class="round-phase" data-tooltip="Expansionsphase" data-tooltip-position="bottom"><i
 						class="fa-solid fa-person-military-rifle"></i></div>
-				<div class="round-phase" data-tooltip="Bonuskarte"><i class="fa-solid fa-money-bill-1"></i></div>
-				<div class="round-phase" data-tooltip="Einkommen"><i class="fa-solid fa-sack-dollar"></i></div>
-				<div class="round-phase" data-tooltip="Mangel/Überfluss würfeln"><i class="fa-solid fa-dice"></i></div>
+				<div class="round-phase" data-tooltip="Bonuskarte" data-tooltip-position="bottom"><i class="fa-solid fa-money-bill-1"></i></div>
+				<div class="round-phase" data-tooltip="Einkommen" data-tooltip-position="bottom"><i class="fa-solid fa-sack-dollar"></i></div>
+				<div class="round-phase" data-tooltip="Mangel/Überfluss würfeln" data-tooltip-position="bottom"><i class="fa-solid fa-dice"></i></div>
 			</div>
-			<div class="btn-group">
-				<button class="selective-interface-trigger" data-select-if="chat" data-tooltip="Chat"><i
-						class="fa-regular fa-comment"></i></button>
-				<button class="selective-interface-trigger" data-select-if="ship" data-tooltip="Schiffe"><i
-						class="fa-solid fa-sailboat"></i></button>
-				<button class="selective-interface-trigger" data-select-if="persons" data-tooltip="Persönlickeiten"><i
-						class="fa-solid fa-person"></i></button>
-				<button class="selective-interface-trigger" data-select-if="bioms"
-					data-tooltip="Rohstoffpreise Mangel/Überfluss"><i class="fa-solid fa-boxes-stacked"></i></button>
-				<button class="selective-interface-trigger" data-select-if="misery" data-tooltip="Elendsindex"><i
-						class="fa-solid fa-poo"></i></button>
-				<button class="selective-interface-trigger" data-select-if="order" data-tooltip="Reihenfolge"><i
-						class="fa-solid fa-arrow-down-wide-short"></i></button>
-				<button class="selective-interface-trigger" data-select-if="troop" data-tooltip="Truppen"><i
-						class="fa-solid fa-person-military-rifle"></i></button>
-				<button class="selective-interface-trigger" data-select-if="progress" data-tooltip="Fortschritte"><i
-						class="fa-solid fa-table"></i></button>
-			</div>
-			<div id="gameStatus"></div>
-		</nav>
 		<input type="hidden" id="userInput" value="<%- user.name %>" />
-
+	</nav>
+	<div id="gameStatus"></div>
+	 <div id="interface-selector" class="btn-group col">
+		<button class="selective-interface-trigger" data-select-if="chat" data-tooltip="Chat" data-tooltip-position="left"><i
+				class="fa-regular fa-comment"></i></button>
+		<button class="selective-interface-trigger" data-select-if="ship" data-tooltip="Schiffe" data-tooltip-position="left"><i
+				class="fa-solid fa-sailboat"></i></button>
+		<button class="selective-interface-trigger" data-select-if="persons" data-tooltip="Persönlickeiten" data-tooltip-position="left"><i
+				class="fa-solid fa-person"></i></button>
+		<button class="selective-interface-trigger" data-select-if="bioms"
+			data-tooltip="Rohstoffpreise Mangel/Überfluss" data-tooltip-position="left"><i class="fa-solid fa-boxes-stacked"></i></button>
+		<button class="selective-interface-trigger" data-select-if="misery" data-tooltip="Elendsindex" data-tooltip-position="left"><i
+				class="fa-solid fa-poo"></i></button>
+		<button class="selective-interface-trigger" data-select-if="order" data-tooltip="Reihenfolge" data-tooltip-position="left"><i
+				class="fa-solid fa-arrow-down-wide-short"></i></button>
+		<button class="selective-interface-trigger" data-select-if="property" data-tooltip="Truppen" data-tooltip-position="left"><i
+				class="fa-solid fa-person-military-rifle"></i></button>
+		<button class="selective-interface-trigger" data-select-if="progress" data-tooltip="Fortschritte" data-tooltip-position="left"><i
+				class="fa-solid fa-table"></i></button>
+	</div>
 		<div id="interfaces">
 
 			<div class="chat-wrap selective-interface" data-select-if="chat">
@@ -108,7 +115,6 @@
 						</div>
 						<% }); %>
 				</div>
-
 				<form id="chatForm" class="flex gap-2">
 					<input type="hidden" id="gameId" value="<%= gameId %>">
 					<input type="text" id="messageInput" class="flex-1 px-4 py-2 border rounded"
@@ -188,13 +194,13 @@
 				</div>
 			</div>
 
-			<div class="troop-wrap selective-interface" data-select-if="troop">
-				<% troops.forEach((troop, index)=> { %>
-					<div class="troop-item" data-index="<%= index %>">
-						<div class="troopcount">x<%= index %>
+			<div class="property-wrap selective-interface" data-select-if="property">
+				<% propertys.forEach((property, index)=> { %>
+					<div class="property-item" data-index="<%= index %>">
+						<div class="propertycount">x<%= index %>
 						</div>
 						<div>
-							<%= troop[`val_${userCount}`] || 'N/A' %> Dukaten
+							<%= property[`val_${userCount}`] || 'N/A' %> Dukaten
 						</div>
 					</div>
 					<% }); %>
@@ -232,29 +238,16 @@
 			</div>
 
 		</div>
-
-		<div id="mapwrap">
-			<div id="map">
-				<% regions.forEach(function(region) { %>
-					<%- region.svgPath %>
-						<% }); %>
-			</div>
-		</div>
-		</div>
 		<div id="players-hand">
 			<div class="card-hand">
 				<% cards.forEach(function(card, index) { %>
-					<% if (index % 1===0) { %>
-						<div class="card">
-							<button>Ausspielen</button>
-							<img class="body-img" src="/img/card.png" />
-						</div>
-						<% } %>
-							<% }); %>
+					<div class="card">
+						<button class="sm"><i class="fa-solid fa-arrow-up"></i></button>
+						<img class="body-img" src="/img/cards/<%= card.name %>.png" />
+					</div>
+				<% }); %>
 			</div>
-		</div>
-
-
+		</div> 
 	</main>
 
 	<%- include('../includes/end.ejs') %>

@@ -1,16 +1,22 @@
-
 #mapwrap {
-	max-width: 1200px;
-	margin: auto;
-	border: 8px solid rgb(210, 159, 8);
-	background-color: #001c7f;
-	overflow: hidden;
+	box-sizing: border-box;
+    height: 100vh;
+    width: 100vw;
+    max-height: 100vh;
+    max-width: 100vw;
+    margin: auto;
+    background-color: #001c7f;
+    overflow: hidden;
+	border-bottom: 60px solid black;
 }
+
 #map {
-    cursor: grab; /* Cursor-Design, wenn man die Karte greifen kann */
-	position: relative;
-	background-color: #001c7f;
+    width: 4000px;
+    cursor: grab;
+    position: relative;
+    background-color: #001c7f;
     aspect-ratio: 20 / 17;
-    transform-origin: 0 0; /* Zoomt von der oberen linken Ecke */
-    transition: transform 0.2s; /* Glattes Zoomen */
+    transform-origin: 0 0;
+    transition: transform 0.2s;
+    transform: scale(0.20);
 }

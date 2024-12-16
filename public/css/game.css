@@ -1,0 +1,33 @@
+#back-button {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+	background-color: var(--bg-color);
+}
+
+#game-nav {
+    position: absolute;
+	box-sizing: border-box;
+	padding: 2px 20px 2px 10px;
+    z-index: 3;
+    top: 0;
+    left: 50%;
+	transform: translate(-50%, 0);
+	background-color: var(--bg-color);
+	display: flex;
+	gap: 10px;
+	border-radius: 0 0 16px 16px;
+}
+
+#interface-selector {
+	background-color: var(--bg-color);
+    position: absolute;
+	box-sizing: border-box;
+	padding: 5px;
+    z-index: 3;
+    top: 25%;
+    right: 0;
+	transform: translate(0, -50%);
+	border-radius: 4px 0 0 4px;
+}

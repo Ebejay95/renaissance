@@ -17,11 +17,11 @@
 
 .card {
 	float: right;
-	width: 200px;
-	height: 300px;
+	width: 180px;
+	height: 260px;
 	overflow: hidden;
-	margin: 20px 10px;
-	background: white;
+	margin: 0 0 20px 0;
+	background: black;
 	padding: 0px;
 	color: black;
 	border: 1px solid rgba(100, 100, 100, .1);
@@ -40,6 +40,8 @@
 	left: -1%;
 	width: 102%;
 	height: 102%;
+	opacity: 0.7;
+	transition: transform .4s ease-out;
 }
 
 /*we put this in here to overwrite the previous rule ... */
@@ -59,7 +61,7 @@
 
 
 .card-hand .card {
-	margin-right: -120px;
+	margin-right: -40px;
 	display: inline-block;
 	position: relative;
 	text-align: right;
@@ -73,29 +75,34 @@
 	position: relative;
 	pointer-events: none;
 	transition: opacity .4s ease-out;
+	background-color: #ddd;
 }
 
 .card-hand .card:hover button {
 	opacity: 1;
 	pointer-events: all;
-
 }
 
 .card-hand .card:hover {
 	cursor: pointer;
-	transform: translate(10%, -35%) rotate(-5deg);
-	transform-origin: bottom right;
+	transform: translate(0, 15px) scale(1.06);
+	transform-origin: bottom left;
+	z-index: 4;
+
+}
+.card-hand .card:hover img{
+	opacity: 1;
 
 }
 
 #players-hand {
 	box-sizing: border-box;
-	margin-top: -120px;
-	padding-top: 120px;
 	max-width: 100vw;
-	overflow-x: scroll;
-	overflow-y: auto;
-	position: relative;
+    overflow-x: scroll;
+    overflow-y: hidden;
+	position: absolute;
+	bottom: 0;
+	left: 0;
 }
 
 #players-hand::after {

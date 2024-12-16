@@ -5,7 +5,6 @@ exports.get404 = async (req, res, next) => {
         let user = null;
         if (req.session?.user?._id) {
             user = await User.findById(req.session.user._id).populate('name');
-			console.log(user)
         }
 
         res.status(404).render('404', {

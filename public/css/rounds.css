@@ -1,8 +1,7 @@
 .party-badge {
-	height: 70px;
-	width: 70px;
+	height: 30px;
+	width: 30px;
 	border-radius: 50%;
-    mix-blend-mode: color-burn;
 }
 
 .game-rounds {
@@ -53,37 +52,6 @@
 	z-index: 4;
   }
 
-[data-tooltip] {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-}
-
-[data-tooltip]::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 125%; /* Position über dem Element */
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 5px 10px;
-    border-radius: 4px;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s;
-    z-index: 10;
-    font-size: 12px;
-}
-
-[data-tooltip]:hover::after,
-[data-tooltip]:hover::before {
-    opacity: 1;
-    visibility: visible;
-}
-
 #gameStatus {
 	display: block;
 	position: absolute;
@@ -94,6 +62,7 @@
 	padding: 2px 10px;
 	border-radius: 0 0 0 10px;
 	text-align: right;
+	z-index: 5;
 }
 
 #gameStatus.error {
@@ -101,19 +70,20 @@
 }
 
 #interfaces {
-	position: relative;
+	position: absolute;
+	top: 0;
 	height: 100%;
 	pointer-events: none;
 }
 #interfaces.active::after {
     content: "";
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.4);
     box-sizing: border-box;
     position: absolute;
     width: 100vw;
     height: 100vh;
     z-index: 1;
-    top: -102px;
+    top: 0;
     pointer-events: all;
 }
 
@@ -121,14 +91,20 @@
     opacity: 1;
     pointer-events: all;
     z-index: 2;
+    position: relative;
+    top: 10vh;
+    left: 10vw;
+    width: 80vw;
+    height: 80vh;
 }
 #interfaces .selective-interface {
 	box-sizing: border-box;
     position: absolute;
-    width: 100%;
-    z-index: 1;
+	overflow: hidden;
+	height: 0;
+    width: 0;
+    z-index: 4;
     background-color: var(--bg-color);
-    position: absolute;
 	opacity: 0;
 	pointer-events: none;
 }

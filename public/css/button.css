@@ -1,4 +1,3 @@
-
 /* Button Styles */
 a.button, button,
 input[type=submit],
@@ -8,15 +7,29 @@ button[type=submit] {
     border-radius: var(--sborder-radius);
     background-color: var(--bg-color);
     transition: all 0.3s ease;
-	background-color: rgba(200, 200, 200, 0.1);
+    background-color: rgba(200, 200, 200, 0.1);
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1), 
-		-1px -1px 1px white;
-	text-align: center;
-	text-decoration: none;
-	outline: none;
+                -1px -1px 1px white;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
     border: none;
-	user-select: none!important;
-	cursor: pointer;
+    user-select: none !important;
+    cursor: pointer;
+}
+
+a.button.sm, button.sm,
+input[type=submit].sm,
+button[type=submit].sm {
+    padding: 4px;
+    border-radius: 3px;
+}
+
+a.button.sm, button.sm,
+input[type=submit].sm,
+button[type=submit].sm {
+    padding: 2px 8px 2px 4px;
+    border-radius: 3px;
 }
 
 a.button:not(:disabled):hover, button:not(:disabled):hover,
@@ -29,13 +42,18 @@ button[type=submit]:not(:disabled):hover {
 a.button:not(:disabled):active, button:not(:disabled):active,
 input[type=submit]:not(:disabled):active,
 button[type=submit]:not(:disabled):active {
-	color: var(--primary-color);
+    color: var(--primary-color);
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1) inset, 
                 -3px -3px 3px white inset;
 }
+
 /* Button Group Styling */
 .btn-group {
     display: flex;
+}
+.btn-group.col {
+    display: flex;
+    flex-direction: column;
 }
 
 .btn-group a.button, 
@@ -57,6 +75,7 @@ button[type=submit]:not(:disabled):active {
     border-radius: 0; /* Standardmäßig kein Radius */
 }
 
+/* Horizontal Group (Row) */
 .btn-group a.button:first-child,
 .btn-group button:first-child,
 .btn-group input[type=submit]:first-child,
@@ -70,6 +89,23 @@ button[type=submit]:not(:disabled):active {
 .btn-group input[type=submit]:last-child,
 .btn-group button[type=submit]:last-child {
     border-top-right-radius: var(--sborder-radius);
+    border-bottom-right-radius: var(--sborder-radius);
+}
+
+/* Vertical Group (Column) */
+.btn-group.col a.button:first-child,
+.btn-group.col button:first-child,
+.btn-group.col input[type=submit]:first-child,
+.btn-group.col button[type=submit]:first-child {
+    border-top-left-radius: var(--sborder-radius);
+    border-top-right-radius: var(--sborder-radius);
+}
+
+.btn-group.col a.button:last-child,
+.btn-group.col button:last-child,
+.btn-group.col input[type=submit]:last-child,
+.btn-group.col button[type=submit]:last-child {
+    border-bottom-left-radius: var(--sborder-radius);
     border-bottom-right-radius: var(--sborder-radius);
 }
 
