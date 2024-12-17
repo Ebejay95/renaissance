@@ -60,3 +60,8 @@ Search
 ```
 <div id="blabla" class="region" 
 ```
+### Image copies go to 
+Search
+```
+public/svgs
+```
