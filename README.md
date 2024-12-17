@@ -68,7 +68,19 @@ Search
 Pull first
 ```
 git pull
-fix merge conflicts and
+```
+*fix merge conflicts*
+in case no CONFLICT is there
+```
+nano commit message (this command line editor
+Strg + X
+```
+in case CONFLICT is there
+```
+Open VSCode and fix them
+```
+ and
+```
 git add .
 git commit -m "Renaissance"
 git push 
