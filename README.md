@@ -24,7 +24,7 @@ BCRYPT_SALT_ROUNDS=
 ```
 
 
-## For a freind, to deal with this :) :
+## For a friend, to deal with this :) :
 ### Use git
 Retreive Jonathans State
 ```
