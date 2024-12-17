@@ -25,6 +25,12 @@ BCRYPT_SALT_ROUNDS=
 
 
 ## For a friend, to deal with this :) :
+
+
+```
+cd ./Desktop/Renaissance/renaissance
+```
+
 ### Use git
 Retreive Jonathans State
 ```
