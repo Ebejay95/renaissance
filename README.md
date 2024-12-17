@@ -26,14 +26,25 @@ BCRYPT_SALT_ROUNDS=
 
 ## For a freind, to deal with this :) :
 ### Use git
+Retreive Jonathans State
+```
+git pull 
 ```
 
-npm run start
+Push to Repository
+```
+git add .
+git commit -m "Renaissance"
+git push 
 ```
 
 ### Launch Application
+Use Git Bash (search that app in Windows Search)
 ```
-make container
 npm run start
+```
+stop running
+```
+Control C
 ```
 
