@@ -54,7 +54,6 @@ stop running
 Control C
 ```
 
-
 ### Place Regions
 Search
 ```
@@ -63,5 +62,14 @@ Search
 ### Image copies go to 
 Search
 ```
-public/svgs
+/renaissance/public/svgs
+```
+### If push fails
+Pull first
+```
+git pull
+fix merge conflicts and
+git add .
+git commit -m "Renaissance"
+git push 
 ```
