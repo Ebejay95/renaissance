@@ -34,7 +34,6 @@ exports.createRegions = async (game_id) => {
     try {
         const regionsData = [
 			// Zone 1
-            
             { name: 'Zone', className: 'zone1', biom_type: 'zone', x: 27.26, y: 1.04, size: 49.67, deg: -1, zone: 1, attackValue: 0 , transX: 0, transY: 0, capitol: false},
 			// Zone 2
             { name: 'Zone', className: 'zone2', biom_type: 'zone', x: 0, y: 2.52, size: 32.56, deg: 0, zone: 2, attackValue: 0 , transX: 0, transY: 0, capitol: false},
