@@ -54,3 +54,9 @@ stop running
 Control C
 ```
 
+
+### Place Regions
+Search
+```
+<div id="blabla" class="region" 
+```
