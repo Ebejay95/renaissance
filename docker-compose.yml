@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   ubuntu-valgrind:
-    container_name: webserv
+    container_name: renaissance
     build:
       context: .
       dockerfile: Dockerfile

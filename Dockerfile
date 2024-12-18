@@ -1,24 +1,20 @@
-# Nutze das Basis-Image Ubuntu
-FROM ubuntu:latest
+# Use official Node.js image as base
+FROM node:20-bullseye
 
-# Aktualisiere Paketliste und installiere notwendige Pakete
-RUN apt-get update && \
-    apt-get install -y curl make gcc g++ bash && \
-    apt-get clean
-
-# Installiere Node.js und npm
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
-    apt-get install -y nodejs && \
-    apt-get clean
-
-# Setze das Arbeitsverzeichnis
+# Set working directory
 WORKDIR /app
 
-# Kopiere alle Dateien ins Image
-COPY ./ /app
+# Copy package files first to leverage Docker cache
+COPY package*.json ./
 
-# Installiere Abhängigkeiten
+# Install dependencies
 RUN npm install
 
-# Setze bash als Standardbefehl
+# Copy the rest of the application
+COPY . .
+
+# Expose port 3000
+EXPOSE 3000
+
+# Set bash as default command
 CMD ["bash"]
