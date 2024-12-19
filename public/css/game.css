@@ -46,4 +46,17 @@
 	font-weight: 700;
 	font-size: 1.2em;
 }
+#troops {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 120px;
+    width: 72px;
+    height: 30px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1) inset, -3px -3px 3px white inset;
+}
+#troops label{
+	font-weight: 700;
+	font-size: 1.2em;
+}
 

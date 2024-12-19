@@ -6,9 +6,16 @@
 <a id="back-button" class="button" data-name="genoa" style="left: 150px;">G</a>
 <a id="back-button" class="button" data-name="paris" style="left: 170px;">P</a>
 <nav id="game-nav">
-	<img class="party-badge" src="/img/paris-badge.jpg" />
+	<div class="party-badge">
+		<% parties.forEach(function(party) { %>
+			<img src="/img/parties/<%= party.className %>_round.png" alt="<%= party.name %>"/>
+		<% }); %>
+	</div>
 	<div id="ducats">
 		<label><i class="fa-solid fa-sack-dollar"></i></i> 251</label>
+	</div>
+	<div id="troops">
+		<label><i class="fa-solid fa-person-military-rifle"></i></i> 12</label>
 	</div>
 	<div id="dices">
 		<% dices.forEach(function(dice) { %>

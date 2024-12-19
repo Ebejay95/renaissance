@@ -3,6 +3,14 @@
 	width: 30px;
 	border-radius: 50%;
 }
+.party-badge img {
+	position: absolute;
+	height: 30px;
+	width: 30px;
+	border-radius: 50%;
+	top: 0;
+	left: 0;
+}
 
 .game-rounds {
 	display: flex;

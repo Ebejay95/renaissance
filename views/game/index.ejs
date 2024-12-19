@@ -18,6 +18,13 @@
 								<h4><%= game.name %></h4>
 							</div>
 							<div>
+								<% games.forEach(function(game) { %>
+									<% game.users.forEach(function(user) { %>
+										<%= user.name %><br>
+									<% }); %>
+								<% }); %>
+							</div>
+							<div>
 								<%= game.state %>
 							</div>
 							<div>

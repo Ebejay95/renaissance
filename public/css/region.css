@@ -78,6 +78,7 @@ svg path{
     text-align: center;
 	user-select: none;
 	position: relative;
+	box-sizing: content-box;
 }
 .full-property-container img{
 	position: absolute;
@@ -98,9 +99,11 @@ svg path{
 	user-select: none;
     display: flex;
 	position: relative;
+	box-sizing: content-box;
 }
-.partial-property-container div:not(:first-of-type) {
+.partial-property-container div {
     margin-left: -10px;
+	transform: translateX(10px);
 }
 
 .partial-property-container img{

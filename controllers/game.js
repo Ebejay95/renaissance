@@ -39,9 +39,10 @@ function prepare_game_view(games) {
 exports.getIndex = (req, res, next) => {
     let userId = null;
     if (req.session.user) {
-		userId = req.session.user._id;
-	}
+        userId = req.session.user._id;
+    }
     Game.find({ users: userId })
+        .populate('users', 'name')
         .then(games => {
             games = prepare_game_view(games);
             return res.render('game/index', {
@@ -60,7 +61,7 @@ exports.getNewGameRoom = async (req, res, next) => {
     try {
         await authRedirect(req, res, next);
         const user = await User.findById(req.session.user._id).populate('friends');
-        
+
         res.render('game/new-game', {
             path: '/',
             pageTitle: 'Neues Spiel',
@@ -71,7 +72,7 @@ exports.getNewGameRoom = async (req, res, next) => {
         console.error(err);
         req.flash('error', 'Ein Fehler ist aufgetreten.');
         res.redirect('/');
-    }  
+    }
 };
 
 exports.getGame = async (req, res, next) => {
@@ -147,14 +148,14 @@ exports.getGame = async (req, res, next) => {
 exports.postGame = async (req, res, next) => {
     const { name, friends } = req.body;
     const userId = req.session.user._id;
-    
+
     const selectedFriends = Array.isArray(friends) ? friends : [friends].filter(Boolean);
-    
+
     if (!selectedFriends || selectedFriends.length < 2) {
         req.flash('error', 'Mindestens 2 Freunde müssen ausgewählt werden.');
         return res.redirect('/new-game');
     }
-    
+
     if (selectedFriends.length > 5) {
         req.flash('error', 'Maximal 5 Freunde können eingeladen werden.');
         return res.redirect('/new-game');
@@ -163,31 +164,31 @@ exports.postGame = async (req, res, next) => {
     try {
         const friendUsers = await User.find({ name: { $in: selectedFriends } });
         const friendIds = friendUsers.map(friend => friend._id);
-        
+
         const currentUser = await User.findById(userId);
-        
+
         const updates = [];
-        
+
         for (const playerId of friendIds) {
             const player = await User.findById(playerId);
             if (!player) continue;
-            
+
             if (!currentUser.friends.includes(playerId.toString())) {
                 currentUser.friends.push(playerId);
             }
-            
+
             if (!player.friends.includes(userId.toString())) {
                 player.friends.push(userId);
                 updates.push(player.save());
             }
-            
+
             for (const otherPlayerId of friendIds) {
                 if (playerId.toString() === otherPlayerId.toString()) continue;
-                
+
                 if (!player.friends.includes(otherPlayerId.toString())) {
                     player.friends.push(otherPlayerId);
                 }
-                
+
                 const otherPlayer = await User.findById(otherPlayerId);
                 if (otherPlayer && !otherPlayer.friends.includes(playerId.toString())) {
                     otherPlayer.friends.push(playerId);
@@ -195,10 +196,10 @@ exports.postGame = async (req, res, next) => {
                 }
             }
         }
-        
+
         updates.push(currentUser.save());
         await Promise.all(updates);
-        
+
         const game = new Game({
             name: name,
             state: 'new',
@@ -207,9 +208,9 @@ exports.postGame = async (req, res, next) => {
             users: [userId, ...friendIds],
             data: []
         });
-        
+
         const savedGame = await game.save();
-        
+
         // Create base game elements
         await Promise.all([
             BiomController.createBioms(savedGame._id),
@@ -223,10 +224,10 @@ exports.postGame = async (req, res, next) => {
 
         // Create parties first and wait for completion
         await PartyController.createParties(savedGame._id);
-        
+
         // Now create regions after parties are created
         await RegionController.createRegions(savedGame._id);
-        
+
         req.flash('success', 'Spiel erfolgreich erstellt.');
         res.redirect('/');
     } catch (err) {
