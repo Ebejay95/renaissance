@@ -1,0 +1,172 @@
+
+#dices {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap);
+    border-radius: 120px;
+    width: 120px;
+    height: 24px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1) inset, -3px -3px 3px white inset;
+}
+
+.dice {
+    border-radius: 4px;
+    width: 20px;
+    height: 20px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.dice-side {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.dice-side .dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    position: absolute;
+}
+
+/* Datenwert 1 */
+.dice[data-value="1"] .dice-side.one {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Datenwert 2 */
+.dice[data-value="2"] .dice-side.two {
+    display: block;
+}
+
+.dice[data-value="2"] .dice-side.two .dot:first-child {
+    top: 2px;
+    left: 2px;
+}
+
+.dice[data-value="2"] .dice-side.two .dot:last-child {
+    bottom: 2px;
+    right: 2px;
+}
+
+/* Datenwert 3 */
+.dice[data-value="3"] .dice-side.three {
+    display: block;
+}
+
+.dice[data-value="3"] .dice-side.three .dot:nth-child(1) {
+    top: 2px;
+    left: 2px;
+}
+
+.dice[data-value="3"] .dice-side.three .dot:nth-child(2) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.dice[data-value="3"] .dice-side.three .dot:nth-child(3) {
+    bottom: 2px;
+    right: 2px;
+}
+
+/* Datenwert 4 */
+.dice[data-value="4"] .dice-side.four {
+    display: block;
+}
+
+.dice[data-value="4"] .dice-side.four .dot:nth-child(1) {
+    top: 2px;
+    left: 2px;
+}
+
+.dice[data-value="4"] .dice-side.four .dot:nth-child(2) {
+    top: 2px;
+    right: 2px;
+}
+
+.dice[data-value="4"] .dice-side.four .dot:nth-child(3) {
+    bottom: 2px;
+    left: 2px;
+}
+
+.dice[data-value="4"] .dice-side.four .dot:nth-child(4) {
+    bottom: 2px;
+    right: 2px;
+}
+
+/* Datenwert 5 */
+.dice[data-value="5"] .dice-side.five {
+    display: block;
+}
+
+.dice[data-value="5"] .dice-side.five .dot:nth-child(1) {
+    top: 2px;
+    left: 2px;
+}
+
+.dice[data-value="5"] .dice-side.five .dot:nth-child(2) {
+    top: 2px;
+    right: 2px;
+}
+
+.dice[data-value="5"] .dice-side.five .dot:nth-child(3) {
+    bottom: 2px;
+    left: 2px;
+}
+
+.dice[data-value="5"] .dice-side.five .dot:nth-child(4) {
+    bottom: 2px;
+    right: 2px;
+}
+
+.dice[data-value="5"] .dice-side.five .dot:nth-child(5) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.dice[data-value="6"] .dice-side.six {
+    display: block;
+}
+
+.dice[data-value="6"] .dice-side.six .dot:nth-child(1) {
+    top: 2px;
+    left: 2px;
+}
+
+.dice[data-value="6"] .dice-side.six .dot:nth-child(2) {
+    top: 2px;
+    right: 2px;
+}
+
+.dice[data-value="6"] .dice-side.six .dot:nth-child(3) {
+    top: 50%;
+    left: 2px;
+    transform: translateY(-50%);
+}
+
+.dice[data-value="6"] .dice-side.six .dot:nth-child(4) {
+    top: 50%;
+    right: 2px;
+    transform: translateY(-50%);
+}
+
+.dice[data-value="6"] .dice-side.six .dot:nth-child(5) {
+    bottom: 2px;
+    left: 2px;
+}
+
+.dice[data-value="6"] .dice-side.six .dot:nth-child(6) {
+    bottom: 2px;
+    right: 2px;
+}
+
+

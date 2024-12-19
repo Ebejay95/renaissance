@@ -1,0 +1,18 @@
+
+<div class="ship-wrap selective-interface" data-select-if="ship">
+	<% ships.forEach(function(ship) { %>
+		<div class="<%= ship.size %>-ship-field" data-ship-index="<%= ship.index %>"
+			data-ship="<%= ship.value %>"><label>
+				<%= ship.value %>
+					<%= ship.label %>
+			</label><span>
+				<%= ship.value %>
+			</span>
+
+			<% parties.forEach(function(party) { %>
+				<img class="<%= party.className %>-ship ship" src="/img/parties/<%= party.className %>_ship_big.png" alt="<%= party.name %>"/>
+				<img class="<%= party.className %>-ship ship" src="/img/parties/<%= party.className %>_ship_small.png" alt="<%= party.name %>"/>
+			<% }); %>
+		</div>
+		<% }); %>
+</div>

@@ -1,0 +1,26 @@
+.progress-wrap {
+	box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+	flex-wrap: wrap;
+    padding: var(--gap);
+    gap: var(--gap);
+}
+.progress-group {
+	width: 30%;
+	box-sizing: border-box;
+}
+.progress-group-list {
+	box-sizing: border-box;
+	border: solid black 2px;
+}
+.progress-group-item:not(:first-of-type){
+	border-top: solid black 2px;
+}
+.progress-group-item {
+	box-sizing: border-box;
+	padding: 10px;
+}
+.progress-group-item-title {
+	font-weight: 800;
+}

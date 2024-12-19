@@ -1,0 +1,12 @@
+<div class="misery-wrap selective-interface" data-select-if="misery">
+	<div class="misery-bar">
+		<% miseries.forEach(function(misery) { %>
+			<div class="misery-item" data-index="<%= misery.index %>"
+				style="background-color: <%= misery.color %>">
+				<div>
+					<%= misery.value===2000 ? 'Chaos' : misery.value %>
+				</div>
+			</div>
+			<% }); %>
+	</div>
+</div>

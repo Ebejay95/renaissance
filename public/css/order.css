@@ -1,0 +1,20 @@
+
+.order-wrap {
+	box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: var(--gap);
+	display: flex;
+	flex-direction: column;
+}
+.order-bar {
+    display: flex;
+    flex-direction: row;
+    gap: var(--gap);
+}
+
+.order-item {
+	border: 2px solid black;
+    height: 70px;
+    width: 70px;
+}

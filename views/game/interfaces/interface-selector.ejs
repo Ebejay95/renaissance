@@ -1,0 +1,28 @@
+<div id="interface-selector" class="btn-group col">
+	<button class="selective-interface-trigger" data-select-if="chat" data-tooltip="Chat" data-tooltip-position="left"><i
+			class="fa-regular fa-comment"></i></button>
+	<button class="selective-interface-trigger" data-select-if="ship" data-tooltip="Schiffe" data-tooltip-position="left"><i
+			class="fa-solid fa-sailboat"></i></button>
+	<button class="selective-interface-trigger" data-select-if="persons" data-tooltip="Persönlickeiten" data-tooltip-position="left"><i
+			class="fa-solid fa-person"></i></button>
+	<button class="selective-interface-trigger" data-select-if="bioms"
+		data-tooltip="Rohstoffpreise Mangel/Überfluss" data-tooltip-position="left"><i class="fa-solid fa-boxes-stacked"></i></button>
+	<button class="selective-interface-trigger" data-select-if="misery" data-tooltip="Elendsindex" data-tooltip-position="left"><i
+			class="fa-solid fa-poo"></i></button>
+	<button class="selective-interface-trigger" data-select-if="order" data-tooltip="Reihenfolge" data-tooltip-position="left"><i
+			class="fa-solid fa-arrow-down-wide-short"></i></button>
+	<button class="selective-interface-trigger" data-select-if="property" data-tooltip="Truppen" data-tooltip-position="left"><i
+			class="fa-solid fa-person-military-rifle"></i></button>
+	<button class="selective-interface-trigger" data-select-if="progress" data-tooltip="Fortschritte" data-tooltip-position="left"><i
+			class="fa-solid fa-table"></i></button>
+</div>
+<div id="interfaces">
+	<%- include('./chat.ejs') %>
+	<%- include('./ship.ejs') %>
+	<%- include('./cards.ejs') %>
+	<%- include('./bioms.ejs') %>
+	<%- include('./misery.ejs') %>
+	<%- include('./order.ejs') %>
+	<%- include('./property.ejs') %>
+	<%- include('./progress.ejs') %>
+</div>

@@ -1,0 +1,22 @@
+.property-wrap {
+	box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+	flex-wrap: wrap;
+    padding: var(--gap);
+    gap: var(--gap);
+}
+
+.property-item {
+	border-radius: 50%;
+	border: 2px solid black;
+    height: 90px;
+    width: 90px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.propertycount {
+	font-size:1.5em;
+}

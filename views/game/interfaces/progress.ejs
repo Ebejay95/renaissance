@@ -1,0 +1,30 @@
+<div class="progress-wrap selective-interface" data-select-if="progress">
+	<% for (const group in progresses) { %>
+		<div class="progress-group">
+			<h3>
+				<%= group %>
+			</h3>
+			<div class="progress-group-list">
+				<% progresses[group].forEach(function(progress) { %>
+					<div class="progress-group-item">
+						<strong>
+							<%= progress.name %>
+						</strong>
+						<%= progress.cost %> Dukaten
+							Nachlass <%= progress.discount %> Dukaten
+								<%= progress.dependencies %>
+									<%= progress.description %>
+										<div>
+											<% players.forEach(function(player) { %>
+												<%- player.name %>
+													<% }); %>
+										</div>
+										<div>
+											<button>Für X kaufen</button>
+										</div>
+					</div>
+					<% }); %>
+			</div>
+		</div>
+		<% } %>
+</div>

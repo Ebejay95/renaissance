@@ -115,3 +115,21 @@
 	height: 30%;
 	z-index: 1;
 }
+
+
+
+.persons-wrap {
+	box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: var(--gap);
+	display: flex;
+	flex-direction: column;
+}
+.persons-bar {
+	box-sizing: border-box;
+	padding: 100px;
+	width: 600px;
+	background: rgb(178, 125, 0);
+	background: linear-gradient(270deg, rgb(178, 125, 0) 0%, rgb(102, 56, 0) 100%);
+}

@@ -1,0 +1,29 @@
+
+<div class="bioms-wrap selective-interface" data-select-if="bioms">
+	<% bioms.forEach(function(biom) { %>
+		<div class="biom-line">
+			<div class="biom-item shortage-abundance">
+				<div class="shortage <%= biom.className %>"><label>Mangel</label></div>
+				<div class="abundance <%= biom.className %>"><label>Überfluss</label></div>
+			</div>
+			<div class="biom-item" style="background-color: <%= biom.color %>">
+				<div>
+					<%= biom.revenues[0] %>
+				</div>
+				<div>
+					<%= biom.name %>
+				</div>
+				<div>
+					<%= biom.epoch %>
+				</div>
+			</div>
+			<% biom.revenues.forEach(function(rev) { %>
+				<div class="biom-item" style="background-color: <%= biom.color %>">
+					<div>
+						<%= rev %>
+					</div>
+				</div>
+				<% }); %>
+		</div>
+		<% }); %>
+</div>

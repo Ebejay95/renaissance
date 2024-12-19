@@ -1,15 +1,25 @@
-<%- include('includes/head.ejs') %>
-</head>
+<%- include('./includes/head.ejs') %>
 
-<body>
-	<nav class="flex">
-		<div>Hallo, <%= user.name %></div>
-		<div class="flex">
-			<a href="/" class="button">Spiele</a>
-			<a href="/profile" class="button">Profil</a>
-			<a href="/logout" class="button">Logout</a>
+	<% if (user) { %>
+		<nav class="flex">
+			<div>Hallo, <%= user.name %></div>
+			<div class="flex">
+				<a href="/" class="button">Spiele</a>
+				<a href="/profile" class="button">Profil</a>
+				<a href="/logout" class="button">Logout</a>
+			</div>
+		</nav>
+		<h1>Page Not Found!</h1>
+	<% } else { %>
+		<div class="body-img-wrap">
+			<img class="body-img" src="/img/login-screen.png"/>
 		</div>
-	</nav>
-    <h1>Page Not Found!</h1>
+		<main class="light-main">
+			<div class="box auth-wrap">
+				<h1 class="text-center">Das Zeitalter der Renaissance</h1>
+				<a class="button" href="/login">Starten</a>
+			</div>
+		</main>
+	<% } %>
 
-<%- include('includes/end.ejs') %>
+<%- include('./includes/end.ejs') %>

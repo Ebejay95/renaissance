@@ -1,0 +1,10 @@
+<div id="players-hand">
+	<div class="card-hand">
+		<% cards.forEach(function(card, index) { %>
+			<div class="card">
+				<button class="sm"><i class="fa-solid fa-arrow-up"></i></button>
+				<img class="body-img" src="/img/cards/<%= card.name %>.png" />
+			</div>
+		<% }); %>
+	</div>
+</div>

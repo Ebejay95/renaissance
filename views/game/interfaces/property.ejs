@@ -1,0 +1,12 @@
+
+<div class="property-wrap selective-interface" data-select-if="property">
+	<% propertys.forEach((property, index)=> { %>
+		<div class="property-item" data-index="<%= index %>">
+			<div class="propertycount">x<%= index %>
+			</div>
+			<div>
+				<%= property[`val_${userCount}`] || 'N/A' %> Dukaten
+			</div>
+		</div>
+		<% }); %>
+</div>

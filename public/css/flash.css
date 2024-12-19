@@ -1,0 +1,25 @@
+/* Flash Messages */
+.flash-container {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	z-index: 9999;
+	pointer-events: none;
+  }
+
+  .flash-message {
+	margin-bottom: 10px;
+	border-radius: var(--sborder-radius);
+	box-sizing: border-box;
+	padding: 10px;
+	animation: fadeOut 2s ease forwards;
+	animation-delay: 5s;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1),
+				-3px -3px 3px white;
+
+	  pointer-events: none;
+  }
+
+  .error-message { background-color: var(--flash-error-bg); }
+  .success-message { background-color: var(--flash-success-bg); }
+  .notice-message { background-color: var(--flash-notice-bg); }

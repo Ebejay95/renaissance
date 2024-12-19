@@ -1,0 +1,24 @@
+<div class="chat-wrap selective-interface" data-select-if="chat">
+	<div id="chat" class="chat">
+		<% messages.forEach(function(message) { %>
+			<div class="message <%= user.name === message.sender.name ? 'own' : '' %>">
+				<div class="sender">
+					<%= message.sender.name %>
+				</div>
+				<div class="message-content">
+					<%= message.content %>
+				</div>
+				<div class="timestamp">
+					<%= message.formattedDate %>, <%= message.formattedTime %>
+				</div>
+			</div>
+			<% }); %>
+	</div>
+	<form id="chatForm" class="flex gap-2">
+		<input type="hidden" id="gameId" value="<%= gameId %>">
+		<input type="text" id="messageInput" class="flex-1 px-4 py-2 border rounded"
+			placeholder="Sag was nettes...">
+		<button type="submit"
+			class="px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Senden</button>
+	</form>
+</div>

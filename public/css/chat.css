@@ -1,0 +1,49 @@
+
+.chat-wrap {
+	box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    padding: var(--gap);
+}
+
+.chat {
+    padding: 10px;
+    transition: all 0.3s ease;
+    border-radius: var(--sborder-radius);
+    background-color: var(--bg-color);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1) inset,
+                -3px -3px 3px white inset;
+				border: none;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+    padding: var(--gap);
+	height: 60vh;
+	overflow-y: scroll;
+}
+.chat .message {
+	display: block;
+	box-sizing: border-box;
+	padding: 5px 16px;
+	width: 80%;
+	border-radius: var(--gap);
+	background-color: rgb(172, 241, 218);
+}
+.chat .message.own{
+	margin-left: auto;
+	background-color: rgb(172, 209, 241);
+}
+.chat .message .sender{
+	font-weight: 800;
+	font-size: 0.8em;
+	margin-bottom: 3px;
+}
+.chat .message .timestamp{
+	font-size: 0.8em;
+	text-align: right;
+}
+.chat-wrap input {
+	width: 100%; /* oder eine spezifische Breite wie 300px */
+	flex: 1; /* lässt das Input-Feld den verfügbaren Platz einnehmen */
+}

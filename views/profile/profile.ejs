@@ -15,32 +15,31 @@
 					<div>
 						<h2>Benutzername ändern</h2>
 						<form method="POST" action="/profile/update-username" class="form-control">
-							<input type="text" 
-								   name="newUsername" 
-								   placeholder="Neuer Benutzername" 
-								   pattern="[a-z0-9_]+" 
+							<input type="text"
+								   name="newUsername"
+								   placeholder="Neuer Benutzername"
+								   pattern="[a-z0-9_]+"
 								   title="Nur kleine Buchstaben, Zahlen und Unterstriche erlaubt"
 								   required>
 							<input type="submit" value="Ändern" class="button">
 						</form>
 					</div>
 					<div class="flex col">
-					<!-- Friend Management -->
 						<h2>Freunde</h2>
 						<div class="friend-search flex row">
-							<input type="text" 
-								   id="friendSearch" 
-								   placeholder="Freund suchen (Nutzername)" 
+							<input type="text"
+								   id="friendSearch"
+								   placeholder="Freund suchen (Nutzername)"
 								   >
 							<button onclick="searchFriend()" class="button">Suchen</button>
 						</div>
-			
+
 						<ul class="list">
 							<% if (friends && friends.length > 0) { %>
 								<% friends.forEach(friend => { %>
 									<li class="friend-item" id="friend-<%= friend._id %>">
 										<span><%= friend.name %></span>
-										<button onclick="removeFriend('<%= friend._id %>')" 
+										<button onclick="removeFriend('<%= friend._id %>')"
 											class="button button-small">Entfernen</button>
 									</li>
 								<% }); %>
@@ -65,4 +64,3 @@
 	<% } %>
 
 <%- include('../includes/end.ejs') %>
-	
