@@ -16,8 +16,8 @@ exports.createBioms = async (game_id) => {
         { name: 'Gold', className: 'gold', color: '#ffff00', revenues: [10, 40, 90, 160, 250], epoch: "1* / 0 / 1", availability: 'neutral', game: game_id },
         { name: 'Elfenbein', className: 'ivory', color: '#ffffff', revenues: [10, 40, 90, 160], epoch: "1* / 0 / 0", availability: 'neutral', game: game_id },
         { name: 'Unterstützer', className: 'supporter', color: '#ddd', revenues: [], epoch: "", availability: 'neutral', game: game_id },
-        { name: 'Küste', className: 'coast', color: '#aaddff', revenues: [], epoch: "", availability: 'neutral', game: game_id },
-        { name: 'Meer', className: 'sea', color: '#1155ff', revenues: [], epoch: "", availability: 'neutral', game: game_id },
+        { name: 'Küste', className: 'coast', color: '#ffffff44', revenues: [], epoch: "", availability: 'neutral', game: game_id },
+        { name: 'Meer', className: 'sea', color: '#ffffff22', revenues: [], epoch: "", availability: 'neutral', game: game_id },
         { name: 'Zone', className: 'zone', color: 'inherit', revenues: [], epoch: "", availability: 'neutral', game: game_id }
     ];
 
@@ -50,7 +50,7 @@ exports.getBioms = async (game_id) => {
 
  exports.getRevenueBioms = async (game_id) => {
 	try {
-		const bioms = await Biom.find({ 
+		const bioms = await Biom.find({
 			game: game_id,
 			revenues: { $exists: true, $ne: [] }
 		}).sort({ 'revenues.0': 1 });
@@ -68,7 +68,7 @@ exports.deleteBioms = (game_id) => {
                 return true;
             } else {
                 console.log('Keine Biome zum Löschen gefunden.');
-                return false; 
+                return false;
             }
         })
         .catch(err => {

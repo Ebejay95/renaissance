@@ -11,7 +11,7 @@
 	--flash-success-bg:#009900;
 	--flash-notice-color:#9e7600;
 	--flash-notice-bg:#fafdb2;
-	--flash-shadow: 0px 5px 15px 5px rgba(0,0,0,1); 
+	--flash-shadow: 0px 5px 15px 5px rgba(0,0,0,1);
 
 
 	--sborder-top: solid 1px rgb(206, 206, 206);
@@ -174,7 +174,90 @@ a:not(.button):hover {
 .list li:first-child {
 	border-top: 1px solid #ddd;
 }
-  
+
 .list li:nth-child(even) {
 	background-color: rgba(200, 200, 200, 0.1);
+  }
+
+
+
+  :root {
+	--caustics-speed: 36.1s;
+	--caustics-blur: 1px;
+	--caustics-size: 500px;
+	--caustics-border: 5px;
+  }
+
+  * {
+	box-sizing: border-box;
+  }
+
+  .water {
+	background-color: aqua;
+
+	border: solid black;
+	width: 100vw;
+	height: 100vh;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	overflow: hidden;
+  }
+
+  .water > .content {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
+
+	position: absolute;
+	color: cyan;
+	background-color: black;
+	width: 100%;
+	height: 100%;
+
+	clip-path: margin-box inset(var(--caustics-border));
+	padding: 10px;
+	text-align: center;
+  }
+
+  .water .caustics {
+	background-image: url("./ocean.webp");
+	background-repeat: round;
+	background-size: var(--caustics-size);
+	filter: blur(var(--caustics-blur));
+	mix-blend-mode: darken;
+	position: absolute;
+	width: 200%;
+	height: 200%;
+  }
+
+  .water .caustics:nth-child(odd) {
+	animation: offsetX calc(var(--caustics-speed) + 0.1s) infinite linear;
+  }
+
+  .water .caustics:nth-child(even) {
+	animation: offsetY var(--caustics-speed) infinite linear;
+  }
+
+  @keyframes offsetX {
+	from {
+	  left: -100%;
+	}
+
+	to {
+	  left: 0%;
+	}
+  }
+
+  @keyframes offsetY {
+	from {
+	  top: -100%;
+	}
+
+	to {
+	  top: 0%;
+	}
   }

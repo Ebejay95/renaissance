@@ -21,7 +21,7 @@ input:not([type=radio]):not([type=checkbox]):not([type=submit]) {
     transition: all 0.3s ease;
     border-radius: var(--sborder-radius);
     background-color: var(--bg-color);
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1) inset, 
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1) inset,
                 -3px -3px 3px white inset;
 				border: none;
 }
@@ -31,7 +31,7 @@ input.error:not([type=radio]):not([type=checkbox]):not([type=submit]) {
     transition: all 0.3s ease;
     border-radius: var(--sborder-radius);
     background-color: var(--bg-color);
-    box-shadow: 3px 3px 3px rgba(255, 0, 0, 0.3) inset, 
+    box-shadow: 3px 3px 3px rgba(255, 0, 0, 0.3) inset,
                 -3px -3px 3px rgba(255, 0, 0, 0.3) inset;
 				border: none;
 }
@@ -40,7 +40,7 @@ input:not([type=radio]):not([type=checkbox]):not([type=submit]):focus {
     padding: 10px;
     border-radius: var(--sborder-radius);
     background-color: var(--bg-color);
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2) inset, 
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2) inset,
                 -3px -3px 3px white inset;
 				outline: none;
 				border: none;
@@ -70,7 +70,7 @@ input:not([type=radio]):not([type=checkbox]):not([type=submit]):focus {
   padding: 10px;
   animation: fadeOut 2s ease forwards;
   animation-delay: 5s;
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1), 
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1),
 			  -3px -3px 3px white;
 
     pointer-events: none;
@@ -94,7 +94,7 @@ input:not([type=radio]):not([type=checkbox]):not([type=submit]):focus {
     transition: all 0.3s ease;
     border-radius: var(--sborder-radius);
     background-color: var(--bg-color);
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1) inset, 
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1) inset,
                 -3px -3px 3px white inset;
 				border: none;
 	display: flex;
@@ -128,51 +128,6 @@ input:not([type=radio]):not([type=checkbox]):not([type=submit]):focus {
 .chat-wrap input {
 	width: 100%; /* oder eine spezifische Breite wie 300px */
 	flex: 1; /* lässt das Input-Feld den verfügbaren Platz einnehmen */
-}
-
-.ship-wrap {
-	box-sizing: border-box;
-    padding: var(--gap);
-	display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-.small-ship, .medium-ship, .large-ship {
-    display: flex;
-    flex-direction: row;
-}
-.small-ship-field, .medium-ship-field, .large-ship-field {
-	display: block;
-	box-sizing: border-box;
-	position: relative;
-    background-color: rgb(61, 203, 255);
-	border: 2px white solid;
-	width: 25%;
-	height: 20vh;
-	color: white;
-}
-.ship-wrap label {
-	display: block;
-	box-sizing: border-box;
-	padding: 3px;
-	font-size: 1.5em;
-	text-align: center;
-	border-bottom: 2px white solid;
-}
-.ship-wrap span {
-	font-size: 4.5em;
-	opacity: 0.4;
-	position: absolute;
-	left: 5px;
-}
-.small-ship-field {
-    background-color: rgb(61, 203, 255);
-}
-.medium-ship-field {
-    background-color: rgb(0, 157, 214);
-}
-.large-ship-field {
-    background-color: rgb(3, 98, 206);
 }
 
 

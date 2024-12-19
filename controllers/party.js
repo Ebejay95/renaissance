@@ -7,7 +7,7 @@ exports.createParties = async (game_id) => {
         { name: 'London', className: 'london', color: '#6c9649', inGameAt: 5, game: game_id },
         { name: 'Paris', className: 'paris', color: '#812327', inGameAt: 4, game: game_id },
         { name: 'Venedig', className: 'venezia', color: '#d59f3c', inGameAt: 3, game: game_id },
-        { name: 'Genua', className: 'genoa', color: '#674582', inGameAt: 3, game: game_id },
+        { name: 'genoa', className: 'genoa', color: '#674582', inGameAt: 3, game: game_id },
         { name: 'Barcelona', className: 'barcelona', color: '#286c98', inGameAt: 3, game: game_id },
     ];
 

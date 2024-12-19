@@ -96,10 +96,14 @@ svg path{
     pointer-events: none;
     text-align: center;
 	user-select: none;
+    display: flex;
 	position: relative;
 }
+.partial-property-container div:not(:first-of-type) {
+    margin-left: -10px;
+}
+
 .partial-property-container img{
-	display: none;
 	top: 0;
 	left: 0;
     width: 24px;
@@ -112,87 +116,331 @@ svg path{
     transform: translate(4px, 4px);
 }
 
-/* Standard-Stil für die Bilder */
-.partial-property-container img {
-    display: none; /* Versteckt standardmäßig alle Bilder */
+
+
+
+
+
+
+
+
+
+.partial-property-container .img-venezia,
+.partial-property-container .img-paris,
+.partial-property-container .img-genoa,
+.partial-property-container .img-hamburg,
+.partial-property-container .img-barcelona,
+.partial-property-container .img-london {
+	display: none;
 }
 
-/* Sichtbarkeit basierend auf Attributen */
-.region[data-venezia]:has([class~="venezia"]) .partial-property-container img.venezia {
-    display: block;
-}
-
-.region[data-paris]:has([class~="paris"]) .partial-property-container img.paris {
-    display: block;
-}
-
-.region[data-genoa]:has([class~="genua"]) .partial-property-container img.genua {
-    display: block;
-}
-
-.region[data-hamburg]:has([class~="hamburg"]) .partial-property-container img.hamburg {
-    display: block;
-}
-
-.region[data-barcelona]:has([class~="barcelona"]) .partial-property-container img.barcelona {
-    display: block;
-}
-
-.region[data-london]:has([class~="london"]) .partial-property-container img.london {
-    display: block;
-}
-
-/* Zahlenanzeige mit Pseudoelementen */
-.partial-property-container::after {
-    content: ''; /* Standardwert */
-    display: none; /* Unsichtbar, wenn nicht zutreffend */
+.partial-property-container .img-venezia i,
+.partial-property-container .img-paris i,
+.partial-property-container .img-genoa i,
+.partial-property-container .img-hamburg i,
+.partial-property-container .img-barcelona i,
+.partial-property-container .img-london i {
+	display: none;
     position: absolute;
-    bottom: -8px;
-    right: -8px;
-    background-color: white;
-    color: black;
-    font-size: 12px;
-    font-weight: bold;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    border: 1px solid black;
-    line-height: 18px;
-    text-align: center;
+    font-size: 8px;
+    border-radius: 30px 30px 0 0;
+    width: 10px;
+    bottom: 100%;
+    padding: 2px 1px 0 0;
 }
 
-/* Dynamisch für Venezia */
-.region[data-venezia] .partial-property-container::after {
+/* London indicators */
+[data-london="1"] .partial-property-container .london[data-label="1"] {
     display: block;
-    content: attr(data-venezia);
+}
+[data-london="2"] .partial-property-container .london[data-label="2"] {
+    display: block;
+}
+[data-london="3"] .partial-property-container .london[data-label="3"] {
+    display: block;
+}
+[data-london="4"] .partial-property-container .london[data-label="4"] {
+    display: block;
+}
+[data-london="5"] .partial-property-container .london[data-label="5"] {
+    display: block;
+}
+[data-london="6"] .partial-property-container .london[data-label="6"] {
+    display: block;
 }
 
-/* Dynamisch für Paris */
-.region[data-paris] .partial-property-container::after {
+/* Paris indicators */
+[data-paris="1"] .partial-property-container .paris[data-label="1"] {
     display: block;
-    content: attr(data-paris);
+}
+[data-paris="2"] .partial-property-container .paris[data-label="2"] {
+    display: block;
+}
+[data-paris="3"] .partial-property-container .paris[data-label="3"] {
+    display: block;
+}
+[data-paris="4"] .partial-property-container .paris[data-label="4"] {
+    display: block;
+}
+[data-paris="5"] .partial-property-container .paris[data-label="5"] {
+    display: block;
+}
+[data-paris="6"] .partial-property-container .paris[data-label="6"] {
+    display: block;
 }
 
-/* Dynamisch für Genoa */
-.region[data-genoa] .partial-property-container::after {
+/* Hamburg indicators */
+[data-hamburg="1"] .partial-property-container .hamburg[data-label="1"] {
     display: block;
-    content: attr(data-genoa);
+}
+[data-hamburg="2"] .partial-property-container .hamburg[data-label="2"] {
+    display: block;
+}
+[data-hamburg="3"] .partial-property-container .hamburg[data-label="3"] {
+    display: block;
+}
+[data-hamburg="4"] .partial-property-container .hamburg[data-label="4"] {
+    display: block;
+}
+[data-hamburg="5"] .partial-property-container .hamburg[data-label="5"] {
+    display: block;
+}
+[data-hamburg="6"] .partial-property-container .hamburg[data-label="6"] {
+    display: block;
 }
 
-/* Dynamisch für Hamburg */
-.region[data-hamburg] .partial-property-container::after {
+/* Venezia indicators */
+[data-venezia="1"] .partial-property-container .venezia[data-label="1"] {
     display: block;
-    content: attr(data-hamburg);
+}
+[data-venezia="2"] .partial-property-container .venezia[data-label="2"] {
+    display: block;
+}
+[data-venezia="3"] .partial-property-container .venezia[data-label="3"] {
+    display: block;
+}
+[data-venezia="4"] .partial-property-container .venezia[data-label="4"] {
+    display: block;
+}
+[data-venezia="5"] .partial-property-container .venezia[data-label="5"] {
+    display: block;
+}
+[data-venezia="6"] .partial-property-container .venezia[data-label="6"] {
+    display: block;
 }
 
-/* Dynamisch für Barcelona */
-.region[data-barcelona] .partial-property-container::after {
+/* Barcelona indicators */
+[data-barcelona="1"] .partial-property-container .barcelona[data-label="1"] {
     display: block;
-    content: attr(data-barcelona);
+}
+[data-barcelona="2"] .partial-property-container .barcelona[data-label="2"] {
+    display: block;
+}
+[data-barcelona="3"] .partial-property-container .barcelona[data-label="3"] {
+    display: block;
+}
+[data-barcelona="4"] .partial-property-container .barcelona[data-label="4"] {
+    display: block;
+}
+[data-barcelona="5"] .partial-property-container .barcelona[data-label="5"] {
+    display: block;
+}
+[data-barcelona="6"] .partial-property-container .barcelona[data-label="6"] {
+    display: block;
 }
 
-/* Dynamisch für London */
-.region[data-london] .partial-property-container::after {
+/* Genoa indicators */
+[data-genoa="1"] .partial-property-container .genoa[data-label="1"] {
     display: block;
-    content: attr(data-london);
 }
+[data-genoa="2"] .partial-property-container .genoa[data-label="2"] {
+    display: block;
+}
+[data-genoa="3"] .partial-property-container .genoa[data-label="3"] {
+    display: block;
+}
+[data-genoa="4"] .partial-property-container .genoa[data-label="4"] {
+    display: block;
+}
+[data-genoa="5"] .partial-property-container .genoa[data-label="5"] {
+    display: block;
+}
+[data-genoa="6"] .partial-property-container .genoa[data-label="6"] {
+    display: block;
+}
+
+/* Regeln für volle Besitztümer basierend auf Attack Value */
+[data-attack-value="2"][data-venezia="2"] .full-property-container img.venezia,
+[data-attack-value="2"][data-paris="2"] .full-property-container img.paris,
+[data-attack-value="2"][data-genoa="2"] .full-property-container img.genoa,
+[data-attack-value="2"][data-hamburg="2"] .full-property-container img.hamburg,
+[data-attack-value="2"][data-barcelona="2"] .full-property-container img.barcelona,
+[data-attack-value="2"][data-london="2"] .full-property-container img.london {
+    display: block;
+}
+
+[data-attack-value="3"][data-venezia="3"] .full-property-container img.venezia,
+[data-attack-value="3"][data-paris="3"] .full-property-container img.paris,
+[data-attack-value="3"][data-genoa="3"] .full-property-container img.genoa,
+[data-attack-value="3"][data-hamburg="3"] .full-property-container img.hamburg,
+[data-attack-value="3"][data-barcelona="3"] .full-property-container img.barcelona,
+[data-attack-value="3"][data-london="3"] .full-property-container img.london {
+    display: block;
+}
+
+[data-attack-value="4"][data-venezia="4"] .full-property-container img.venezia,
+[data-attack-value="4"][data-paris="4"] .full-property-container img.paris,
+[data-attack-value="4"][data-genoa="4"] .full-property-container img.genoa,
+[data-attack-value="4"][data-hamburg="4"] .full-property-container img.hamburg,
+[data-attack-value="4"][data-barcelona="4"] .full-property-container img.barcelona,
+[data-attack-value="4"][data-london="4"] .full-property-container img.london {
+    display: block;
+}
+
+[data-attack-value="5"][data-venezia="5"] .full-property-container img.venezia,
+[data-attack-value="5"][data-paris="5"] .full-property-container img.paris,
+[data-attack-value="5"][data-genoa="5"] .full-property-container img.genoa,
+[data-attack-value="5"][data-hamburg="5"] .full-property-container img.hamburg,
+[data-attack-value="5"][data-barcelona="5"] .full-property-container img.barcelona,
+[data-attack-value="5"][data-london="5"] .full-property-container img.london {
+    display: block;
+}
+
+[data-attack-value="6"][data-venezia="6"] .full-property-container img.venezia,
+[data-attack-value="6"][data-paris="6"] .full-property-container img.paris,
+[data-attack-value="6"][data-genoa="6"] .full-property-container img.genoa,
+[data-attack-value="6"][data-hamburg="6"] .full-property-container img.hamburg,
+[data-attack-value="6"][data-barcelona="6"] .full-property-container img.barcelona,
+[data-attack-value="6"][data-london="6"] .full-property-container img.london {
+    display: block;
+}
+
+/* Regeln für partielle Besitztümer mit Attack Value Berücksichtigung */
+[data-attack-value="2"][data-venezia="1"] .partial-property-container .img-venezia,
+[data-attack-value="3"][data-venezia="1"] .partial-property-container .img-venezia,
+[data-attack-value="3"][data-venezia="2"] .partial-property-container .img-venezia,
+[data-attack-value="4"][data-venezia="1"] .partial-property-container .img-venezia,
+[data-attack-value="4"][data-venezia="2"] .partial-property-container .img-venezia,
+[data-attack-value="4"][data-venezia="3"] .partial-property-container .img-venezia,
+[data-attack-value="5"][data-venezia="1"] .partial-property-container .img-venezia,
+[data-attack-value="5"][data-venezia="2"] .partial-property-container .img-venezia,
+[data-attack-value="5"][data-venezia="3"] .partial-property-container .img-venezia,
+[data-attack-value="5"][data-venezia="4"] .partial-property-container .img-venezia,
+[data-attack-value="6"][data-venezia="1"] .partial-property-container .img-venezia,
+[data-attack-value="6"][data-venezia="2"] .partial-property-container .img-venezia,
+[data-attack-value="6"][data-venezia="3"] .partial-property-container .img-venezia,
+[data-attack-value="6"][data-venezia="4"] .partial-property-container .img-venezia,
+[data-attack-value="6"][data-venezia="5"] .partial-property-container .img-venezia,
+[data-attack-value="2"][data-paris="1"] .partial-property-container .img-paris,
+[data-attack-value="3"][data-paris="1"] .partial-property-container .img-paris,
+[data-attack-value="3"][data-paris="2"] .partial-property-container .img-paris,
+[data-attack-value="4"][data-paris="1"] .partial-property-container .img-paris,
+[data-attack-value="4"][data-paris="2"] .partial-property-container .img-paris,
+[data-attack-value="4"][data-paris="3"] .partial-property-container .img-paris,
+[data-attack-value="5"][data-paris="1"] .partial-property-container .img-paris,
+[data-attack-value="5"][data-paris="2"] .partial-property-container .img-paris,
+[data-attack-value="5"][data-paris="3"] .partial-property-container .img-paris,
+[data-attack-value="5"][data-paris="4"] .partial-property-container .img-paris,
+[data-attack-value="6"][data-paris="1"] .partial-property-container .img-paris,
+[data-attack-value="6"][data-paris="2"] .partial-property-container .img-paris,
+[data-attack-value="6"][data-paris="3"] .partial-property-container .img-paris,
+[data-attack-value="6"][data-paris="4"] .partial-property-container .img-paris,
+[data-attack-value="6"][data-paris="5"] .partial-property-container .img-paris,
+[data-attack-value="2"][data-genoa="1"] .partial-property-container .img-genoa,
+[data-attack-value="3"][data-genoa="1"] .partial-property-container .img-genoa,
+[data-attack-value="3"][data-genoa="2"] .partial-property-container .img-genoa,
+[data-attack-value="4"][data-genoa="1"] .partial-property-container .img-genoa,
+[data-attack-value="4"][data-genoa="2"] .partial-property-container .img-genoa,
+[data-attack-value="4"][data-genoa="3"] .partial-property-container .img-genoa,
+[data-attack-value="5"][data-genoa="1"] .partial-property-container .img-genoa,
+[data-attack-value="5"][data-genoa="2"] .partial-property-container .img-genoa,
+[data-attack-value="5"][data-genoa="3"] .partial-property-container .img-genoa,
+[data-attack-value="5"][data-genoa="4"] .partial-property-container .img-genoa,
+[data-attack-value="6"][data-genoa="1"] .partial-property-container .img-genoa,
+[data-attack-value="6"][data-genoa="2"] .partial-property-container .img-genoa,
+[data-attack-value="6"][data-genoa="3"] .partial-property-container .img-genoa,
+[data-attack-value="6"][data-genoa="4"] .partial-property-container .img-genoa,
+[data-attack-value="6"][data-genoa="5"] .partial-property-container .img-genoa,
+[data-attack-value="2"][data-hamburg="1"] .partial-property-container .img-hamburg,
+[data-attack-value="3"][data-hamburg="1"] .partial-property-container .img-hamburg,
+[data-attack-value="3"][data-hamburg="2"] .partial-property-container .img-hamburg,
+[data-attack-value="4"][data-hamburg="1"] .partial-property-container .img-hamburg,
+[data-attack-value="4"][data-hamburg="2"] .partial-property-container .img-hamburg,
+[data-attack-value="4"][data-hamburg="3"] .partial-property-container .img-hamburg,
+[data-attack-value="5"][data-hamburg="1"] .partial-property-container .img-hamburg,
+[data-attack-value="5"][data-hamburg="2"] .partial-property-container .img-hamburg,
+[data-attack-value="5"][data-hamburg="3"] .partial-property-container .img-hamburg,
+[data-attack-value="5"][data-hamburg="4"] .partial-property-container .img-hamburg,
+[data-attack-value="6"][data-hamburg="1"] .partial-property-container .img-hamburg,
+[data-attack-value="6"][data-hamburg="2"] .partial-property-container .img-hamburg,
+[data-attack-value="6"][data-hamburg="3"] .partial-property-container .img-hamburg,
+[data-attack-value="6"][data-hamburg="4"] .partial-property-container .img-hamburg,
+[data-attack-value="6"][data-hamburg="5"] .partial-property-container .img-hamburg,
+[data-attack-value="2"][data-barcelona="1"] .partial-property-container .img-barcelona,
+[data-attack-value="3"][data-barcelona="1"] .partial-property-container .img-barcelona,
+[data-attack-value="3"][data-barcelona="2"] .partial-property-container .img-barcelona,
+[data-attack-value="4"][data-barcelona="1"] .partial-property-container .img-barcelona,
+[data-attack-value="4"][data-barcelona="2"] .partial-property-container .img-barcelona,
+[data-attack-value="4"][data-barcelona="3"] .partial-property-container .img-barcelona,
+[data-attack-value="5"][data-barcelona="1"] .partial-property-container .img-barcelona,
+[data-attack-value="5"][data-barcelona="2"] .partial-property-container .img-barcelona,
+[data-attack-value="5"][data-barcelona="3"] .partial-property-container .img-barcelona,
+[data-attack-value="5"][data-barcelona="4"] .partial-property-container .img-barcelona,
+[data-attack-value="6"][data-barcelona="1"] .partial-property-container .img-barcelona,
+[data-attack-value="6"][data-barcelona="2"] .partial-property-container .img-barcelona,
+[data-attack-value="6"][data-barcelona="3"] .partial-property-container .img-barcelona,
+[data-attack-value="6"][data-barcelona="4"] .partial-property-container .img-barcelona,
+[data-attack-value="6"][data-barcelona="5"] .partial-property-container .img-barcelona,
+[data-attack-value="2"][data-london="1"] .partial-property-container .img-london,
+[data-attack-value="3"][data-london="1"] .partial-property-container .img-london,
+[data-attack-value="3"][data-london="2"] .partial-property-container .img-london,
+[data-attack-value="4"][data-london="1"] .partial-property-container .img-london,
+[data-attack-value="4"][data-london="2"] .partial-property-container .img-london,
+[data-attack-value="4"][data-london="3"] .partial-property-container .img-london,
+[data-attack-value="5"][data-london="1"] .partial-property-container .img-london,
+[data-attack-value="5"][data-london="2"] .partial-property-container .img-london,
+[data-attack-value="5"][data-london="3"] .partial-property-container .img-london,
+[data-attack-value="5"][data-london="4"] .partial-property-container .img-london,
+[data-attack-value="6"][data-london="1"] .partial-property-container .img-london,
+[data-attack-value="6"][data-london="2"] .partial-property-container .img-london,
+[data-attack-value="6"][data-london="3"] .partial-property-container .img-london,
+[data-attack-value="6"][data-london="4"] .partial-property-container .img-london,
+[data-attack-value="6"][data-london="5"] .partial-property-container .img-london {
+    display: block;
+}
+
+/* Ausblenden ALLER partiellen Anzeigen wenn irgendein Land vollen Besitz hat */
+[data-attack-value="2"][data-venezia="2"] .partial-property-container div,
+[data-attack-value="2"][data-paris="2"] .partial-property-container div,
+[data-attack-value="2"][data-genoa="2"] .partial-property-container div,
+[data-attack-value="2"][data-hamburg="2"] .partial-property-container div,
+[data-attack-value="2"][data-barcelona="2"] .partial-property-container div,
+[data-attack-value="2"][data-london="2"] .partial-property-container div,
+[data-attack-value="3"][data-venezia="3"] .partial-property-container div,
+[data-attack-value="3"][data-paris="3"] .partial-property-container div,
+[data-attack-value="3"][data-genoa="3"] .partial-property-container div,
+[data-attack-value="3"][data-hamburg="3"] .partial-property-container div,
+[data-attack-value="3"][data-barcelona="3"] .partial-property-container div,
+[data-attack-value="3"][data-london="3"] .partial-property-container div,
+[data-attack-value="4"][data-venezia="4"] .partial-property-container div,
+[data-attack-value="4"][data-paris="4"] .partial-property-container div,
+[data-attack-value="4"][data-genoa="4"] .partial-property-container div,
+[data-attack-value="4"][data-hamburg="4"] .partial-property-container div,
+[data-attack-value="4"][data-barcelona="4"] .partial-property-container div,
+[data-attack-value="4"][data-london="4"] .partial-property-container div,
+[data-attack-value="5"][data-venezia="5"] .partial-property-container div,
+[data-attack-value="5"][data-paris="5"] .partial-property-container div,
+[data-attack-value="5"][data-genoa="5"] .partial-property-container div,
+[data-attack-value="5"][data-hamburg="5"] .partial-property-container div,
+[data-attack-value="5"][data-barcelona="5"] .partial-property-container div,
+[data-attack-value="5"][data-london="5"] .partial-property-container div,
+[data-attack-value="6"][data-venezia="6"] .partial-property-container div,
+[data-attack-value="6"][data-paris="6"] .partial-property-container div,
+[data-attack-value="6"][data-genoa="6"] .partial-property-container div,
+[data-attack-value="6"][data-hamburg="6"] .partial-property-container div,
+[data-attack-value="6"][data-barcelona="6"] .partial-property-container div,
+[data-attack-value="6"][data-london="6"] .partial-property-container div {
+    display: none !important;
+}
+
+
