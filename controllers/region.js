@@ -77,7 +77,7 @@ exports.createRegions = async (game_id) => {
 			{ name: 'Lisboa', className: 'lisboa', biom_type: 'wine', x: 10.46, y: 74.9, size: 5.75, deg: 0, zone: 4, attackValue: 3, transX: 0, transY: 0, capitol: false },
 			{ name: 'Palma Küste', className: 'palma_coast', biom_type: 'coast', x: 28.52, y: 75.56, size: 4.61, deg: 0, zone: 4, attackValue: 0, transX: 0, transY: 0, capitol: false },
 			{ name: 'Palma', className: 'palma', biom_type: 'supporter', x: 27.55, y: 74.74, size: 4.24, deg: 0, zone: 4, attackValue: 1, transX: 0, transY: 0, capitol: false },
-			{ name: 'San Sebastian Küste', className: 'san_sebastian_coast', biom_type: 'coast', x: 16.39, y: 65.3, size: 5.2, deg: 0, zone: 4, attackValue: 0, transX: 0, transY: 0, capitol: false },
+			{ name: 'San Sebastian Küste', className: 'san_sebastian_coast', biom_type: 'coast', x: 16.39, y: 65.62, size: 5.2, deg: 0, zone: 4, attackValue: 0, transX: 0, transY: 0, capitol: false },
 			{ name: 'San Sebastian', className: 'san_sebastian', biom_type: 'whool', x: 17.13, y: 67.32, size: 9.14, deg: 0, zone: 4, attackValue: 2, transX: 0, transY: 0, capitol: false },
 			{ name: 'Toledo', className: 'toledo', biom_type: 'whool', x: 14.89, y: 72.05, size: 9.85, deg: 0, zone: 4, attackValue: 3, transX: 0, transY: 0, capitol: false },
 			{ name: 'Valencia Küste', className: 'valencia_coast', biom_type: 'coast', x: 26.4, y: 75.3, size: 3.28, deg: 0, zone: 4, attackValue: 0, transX: 0, transY: 0, capitol: false },
