@@ -146,6 +146,7 @@ exports.createRegions = async (game_id) => {
 			//{ name: 'Fez', className: 'fez', biom_type: 'timber', x: 19.1, y: 92.8, size: 7.9, deg: 0, zone: 8, attackValue: 2, transX: 0, transY: 0, capitol: false },
 			// Others
 			//{ name: 'Westliches Mittelmeer', className: 'westliches_mittelmeer', biom_type: 'sea', x: 23.8, y: 64, size: 29, deg: 0, zone: 0, attackValue: 0, transX: 0, transY: 0, capitol: false }
+			{ name: 'Zonen Outlay', className: 'zonen_outlay', biom_type: 'zone', x: 23.8, y: 64, size: 29, deg: 0, zone: 0, attackValue: 0, transX: 0, transY: 0, capitol: false }
 		];
 
 		for (const regionData of regionsData) {
