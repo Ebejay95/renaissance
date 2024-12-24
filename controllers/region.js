@@ -34,9 +34,9 @@ exports.createRegions = async (game_id) => {
 	try {
 		const regionsData = [
 			// Zone 1
-			{ name: 'Zone', className: 'zone1', biom_type: 'zone', x: 27.58, y: 2.28, size: 49.59, deg: 0, zone: 1, attackValue: 0, transX: 0, transY: 0, capitol: false },
+			{ name: 'Zone', className: 'zone1', biom_type: 'zone', x: 27.69, y: 0, size: 50.59, deg: 0, zone: 1, attackValue: 0, transX: 0, transY: 0, capitol: false },
 			// Zone 2
-			{ name: 'Zone', className: 'zone2', biom_type: 'zone', x: 0.59, y: 2.83, size: 32.6, deg: 0, zone: 2, attackValue: 0, transX: 0, transY: 0, capitol: false },
+			{ name: 'Zone', className: 'zone2', biom_type: 'zone', x: 0, y: 0.45, size: 33.4, deg: 0, zone: 2, attackValue: 0, transX: 0, transY: 0, capitol: false },
 			//{ name: 'Armagh', className: 'armagh', biom_type: 'supporter', x: 2.6, y: 33, size: 7.6, deg: 0, zone: 2, attackValue: 1, transX: 0, transY: 0, capitol: false },
 			//{ name: 'Armagh Küste', className: 'armagh_coast', biom_type: 'coast', x: 2.8, y: 32.8, size: 6.1, deg: 0, zone: 2, attackValue: 0, transX: 0, transY: 0, capitol: false },
 			//{ name: 'Bergen', className: 'bergen', biom_type: 'timber', x: 20.4, y: 2.3, size: 10, deg: 0, zone: 2, attackValue: 3, transX: 0, transY: 50, capitol: false },
@@ -66,24 +66,24 @@ exports.createRegions = async (game_id) => {
 			//{ name: 'York Küste', className: 'york_coast', biom_type: 'coast', x: 13.2, y: 29.3, size: 6.9, deg: 0, zone: 2, attackValue: 0, transX: 0, transY: 0, capitol: false },
 			//{ name: 'York', className: 'york', biom_type: 'whool', x: 12.5, y: 30.3, size: 6.7, deg: 0, zone: 2, attackValue: 3, transX: 0, transY: 0, capitol: false },
 			// Zone 3
-			{ name: 'Zone', className: 'zone3', biom_type: 'zone', x: 11.96, y: 27.76, size: 46.85, deg: 0, zone: 3, attackValue: 0, transX: 0, transY: 0, capitol: false },
+			{ name: 'Zone', className: 'zone3', biom_type: 'zone', x: 11.49, y: 25.95, size: 48.2, deg: 0, zone: 3, attackValue: 0, transX: 0, transY: 0, capitol: false },
 			// Zone 4
-			{ name: 'Zone', className: 'zone4', biom_type: 'zone', x: 6.96, y: 64.85, size: 26.65, deg: 0, zone: 4, attackValue: 0, transX: 0, transY: 0, capitol: false },
-			{ name: 'Barcelona Küste', className: 'barcelona_coast', biom_type: 'coast', x: 27.95, y: 66.57, size: 5.3, deg: 0, zone: 4, attackValue: 0, transX: 0, transY: 0, capitol: false },
-			{ name: 'Barcelona', className: 'barcelona', biom_type: 'wine', x: 24.14, y: 65.34, size: 7.3, deg: 0, zone: 4, attackValue: 3, transX: 0, transY: 0, capitol: true },
-			{ name: 'Leon Küste', className: 'leon_coast', biom_type: 'coast', x: 7.23, y: 65.63, size: 10, deg: 0, zone: 4, attackValue: 0, transX: 0, transY: 0, capitol: false },
-			{ name: 'Leon', className: 'leon', biom_type: 'supporter', x: 8.9, y: 68.59, size: 11.18, deg: 0, zone: 4, attackValue: 1, transX: 0, transY: 0, capitol: false },
-			{ name: 'Lisboa Küste', className: 'lisboa_coast', biom_type: 'coast', x: 8.8, y: 74.45, size: 3.78, deg: 0, zone: 4, attackValue: 0, transX: 0, transY: 0, capitol: false },
-			{ name: 'Lisboa', className: 'lisboa', biom_type: 'wine', x: 10.46, y: 74.9, size: 5.75, deg: 0, zone: 4, attackValue: 3, transX: 0, transY: 0, capitol: false },
-			{ name: 'Palma Küste', className: 'palma_coast', biom_type: 'coast', x: 28.52, y: 75.56, size: 4.61, deg: 0, zone: 4, attackValue: 0, transX: 0, transY: 0, capitol: false },
-			{ name: 'Palma', className: 'palma', biom_type: 'supporter', x: 27.55, y: 74.74, size: 4.24, deg: 0, zone: 4, attackValue: 1, transX: 0, transY: 0, capitol: false },
-			{ name: 'San Sebastian Küste', className: 'san_sebastian_coast', biom_type: 'coast', x: 16.39, y: 65.62, size: 5.2, deg: 0, zone: 4, attackValue: 0, transX: 0, transY: 0, capitol: false },
-			{ name: 'San Sebastian', className: 'san_sebastian', biom_type: 'whool', x: 17.13, y: 67.32, size: 9.14, deg: 0, zone: 4, attackValue: 2, transX: 0, transY: 0, capitol: false },
-			{ name: 'Toledo', className: 'toledo', biom_type: 'whool', x: 14.89, y: 72.05, size: 9.85, deg: 0, zone: 4, attackValue: 3, transX: 0, transY: 0, capitol: false },
-			{ name: 'Valencia Küste', className: 'valencia_coast', biom_type: 'coast', x: 26.4, y: 75.3, size: 3.28, deg: 0, zone: 4, attackValue: 0, transX: 0, transY: 0, capitol: false },
-			{ name: 'Valencia', className: 'valencia', biom_type: 'silk', x: 22.43, y: 74.53, size: 5.57, deg: 0, zone: 4, attackValue: 2, transX: 0, transY: 0, capitol: false },
+			{ name: 'Zone', className: 'zone4', biom_type: 'zone', x: 6.8, y: 64.12, size: 27, deg: 0, zone: 4, attackValue: 0, transX: 0, transY: 0, capitol: false },
+			{ name: 'Barcelona Küste', className: 'barcelona_coast', biom_type: 'coast', x: 28.15, y: 65.93, size: 5.3, deg: 0, zone: 4, attackValue: 0, transX: 0, transY: 0, capitol: false },
+			{ name: 'Barcelona', className: 'barcelona', biom_type: 'wine', x: 24.24, y: 64.6, size: 7.3, deg: 0, zone: 4, attackValue: 3, transX: 0, transY: 0, capitol: true },
+			{ name: 'Leon Küste', className: 'leon_coast', biom_type: 'coast', x: 7.05, y: 64.91, size: 10.15, deg: 0, zone: 4, attackValue: 0, transX: 0, transY: 0, capitol: false },
+			{ name: 'Leon', className: 'leon', biom_type: 'supporter', x: 8.82, y: 67.93, size: 11.2, deg: 0, zone: 4, attackValue: 1, transX: 0, transY: 0, capitol: false },
+			{ name: 'Lisboa Küste', className: 'lisboa_coast', biom_type: 'coast', x: 8.64, y: 73.84, size: 3.83, deg: 0, zone: 4, attackValue: 0, transX: 0, transY: 0, capitol: false },
+			{ name: 'Lisboa', className: 'lisboa', biom_type: 'wine', x: 10.3, y: 74.29, size: 5.86, deg: 0, zone: 4, attackValue: 3, transX: 0, transY: 0, capitol: false },
+			{ name: 'Palma Küste', className: 'palma_coast', biom_type: 'coast', x: 28.64, y: 74.98, size: 4.69, deg: 0, zone: 4, attackValue: 0, transX: 0, transY: 0, capitol: false },
+			{ name: 'Palma', className: 'palma', biom_type: 'supporter', x: 27.7, y: 74.1, size: 4.3, deg: 0, zone: 4, attackValue: 1, transX: 0, transY: 0, capitol: false },
+			{ name: 'San Sebastian Küste', className: 'san_sebastian_coast', biom_type: 'coast', x: 16.37, y: 64.95, size: 5.2, deg: 0, zone: 4, attackValue: 0, transX: 0, transY: 0, capitol: false },
+			{ name: 'San Sebastian', className: 'san_sebastian', biom_type: 'whool', x: 17.1, y: 66.65, size: 9.14, deg: 0, zone: 4, attackValue: 2, transX: 0, transY: 0, capitol: false },
+			{ name: 'Toledo', className: 'toledo', biom_type: 'whool', x: 14.73, y: 71.36, size: 10.1, deg: 0, zone: 4, attackValue: 3, transX: 0, transY: 0, capitol: false },
+			{ name: 'Valencia Küste', className: 'valencia_coast', biom_type: 'coast', x: 26.48, y: 74.54, size: 3.38, deg: 0, zone: 4, attackValue: 0, transX: 0, transY: 0, capitol: false },
+			{ name: 'Valencia', className: 'valencia', biom_type: 'silk', x: 22.47, y: 73.85, size: 5.65, deg: 0, zone: 4, attackValue: 2, transX: 0, transY: 0, capitol: false },
 			// Zone 5
-			{ name: 'Zone', className: 'zone5', biom_type: 'zone', x: 69.78, y: 23.36, size: 28.5, deg: 0, zone: 5, attackValue: 0, transX: 0, transY: 0, capitol: false },
+			{ name: 'Zone', className: 'zone5', biom_type: 'zone', x: 70.65, y: 21.46, size: 29.36, deg: 0, zone: 5, attackValue: 0, transX: 0, transY: 0, capitol: false },
 			//{ name: 'Absgia Küste', className: 'absgia_coast', biom_type: 'coast', x: 19.1, y: 92.8, size: 7.9, deg: 0, zone: 5, attackValue: 0, transX: 0, transY: 0, capitol: false },
 			//{ name: 'Absgia', className: 'absgia', biom_type: 'supporter', x: 19.1, y: 92.8, size: 7.9, deg: 0, zone: 5, attackValue: 1, transX: 0, transY: 0, capitol: false },
 			//{ name: 'Angora Küste', className: 'angora_coast', biom_type: 'coast', x: 19.1, y: 92.8, size: 7.9, deg: 0, zone: 5, attackValue: 0, transX: 0, transY: 0, capitol: false },
@@ -105,9 +105,9 @@ exports.createRegions = async (game_id) => {
 			//{ name: 'Varna Küste', className: 'varna_coast', biom_type: 'coast', x: 19.1, y: 92.8, size: 7.9, deg: 0, zone: 5, attackValue: 0, transX: 0, transY: 0, capitol: false },
 			//{ name: 'Varna', className: 'varna', biom_type: 'fur', x: 19.1, y: 92.8, size: 7.9, deg: 0, zone: 5, attackValue: 2, transX: 0, transY: 0, capitol: false },
 			// Zone 6
-			{ name: 'Zone', className: 'zone6', biom_type: 'zone', x: 68.1, y: 64.69, size: 28.3, deg: 0, zone: 6, attackValue: 0, transX: 0, transY: 0, capitol: false },
+			{ name: 'Zone', className: 'zone6', biom_type: 'zone', x: 69.07, y: 63.94, size: 28.8, deg: 0, zone: 6, attackValue: 0, transX: 0, transY: 0, capitol: false },
 			// Zone 7
-			{ name: 'Zone', className: 'zone7', biom_type: 'zone', x: 17.64, y: 48.2, size: 43.739, deg: 0, zone: 7, attackValue: 0, transX: 0, transY: 0, capitol: false },
+			{ name: 'Zone', className: 'zone7', biom_type: 'zone', x: 17.43, y: 46.97, size: 44.85, deg: 0, zone: 7, attackValue: 0, transX: 0, transY: 0, capitol: false },
 			//{ name: 'Adria', className: 'adria', biom_type: 'sea', x: 45.6, y: 55.3, size: 12.2, deg: 0, zone: 7, attackValue: 1, transX: 0, transY: 0, capitol: false },
 			//{ name: 'Bari Küste', className: 'bari_coast', biom_type: 'coast', x: 52.1, y: 62.5, size: 6.5, deg: 0, zone: 7, attackValue: 0, transX: 0, transY: 0, capitol: false },
 			//{ name: 'Bari', className: 'bari', biom_type: 'supporter', x: 51.9, y: 63.5, size: 5.9, deg: 0, zone: 7, attackValue: 1, transX: 0, transY: 0, capitol: false },
@@ -142,11 +142,11 @@ exports.createRegions = async (game_id) => {
 			//{ name: 'Venezia Küste', className: 'venezia_coast', biom_type: 'coast', x: 43.7, y: 52.4, size: 4.3, deg: 0, zone: 7, attackValue: 0, transX: 0, transY: 0, capitol: false },
 			//{ name: 'Venezia', className: 'venezia', biom_type: 'cloth', x: 40.9, y: 48.8, size: 7.2, deg: 0, zone: 7, attackValue: 5, transX: 0, transY: 0, capitol: true },
 			// Zone 8
-			{ name: 'Zone', className: 'zone8', biom_type: 'zone', x: 5.65, y: 55.86, size: 76.28, deg: 0, zone: 8, attackValue: 0, transX: 0, transY: 0, capitol: false },
+			{ name: 'Zone', className: 'zone8', biom_type: 'zone', x: 5.45, y: 54.88, size: 77.7, deg: 0, zone: 8, attackValue: 0, transX: 0, transY: 0, capitol: false },
 			//{ name: 'Fez', className: 'fez', biom_type: 'timber', x: 19.1, y: 92.8, size: 7.9, deg: 0, zone: 8, attackValue: 2, transX: 0, transY: 0, capitol: false },
 			// Others
 			//{ name: 'Westliches Mittelmeer', className: 'westliches_mittelmeer', biom_type: 'sea', x: 23.8, y: 64, size: 29, deg: 0, zone: 0, attackValue: 0, transX: 0, transY: 0, capitol: false }
-			{ name: 'Zone', className: 'zonen_outlay', biom_type: 'zone', x: 23.8, y: 64, size: 29, deg: 0, zone: 0, attackValue: 0, transX: 0, transY: 0, capitol: false }
+			//{ name: 'Zone', className: 'zonen_outlay', biom_type: 'zone', x: 23.8, y: 64, size: 29, deg: 0, zone: 0, attackValue: 0, transX: 0, transY: 0, capitol: false }
 		];
 
 		for (const regionData of regionsData) {
