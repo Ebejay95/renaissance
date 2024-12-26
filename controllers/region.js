@@ -118,7 +118,7 @@ exports.createRegions = async (game_id) => {
 			//{ name: 'Cagliori Küste', className: 'cagliori_coast', biom_type: 'coast', x: 37.2, y: 61.8, size: 7.9, deg: 0, zone: 7, attackValue: 4, transX: 0, transY: 0, capitol: false },
 			//{ name: 'Cagliori', className: 'cagliori', biom_type: 'supporter', x: 37.5, y: 61.2, size: 5.4, deg: 0, zone: 7, attackValue: 1, transX: 0, transY: 0, capitol: false },
 			//{ name: 'Dubrovnik Küste', className: 'dubrovnik_coast', biom_type: 'coast', x: 47.9, y: 53.4, size: 10.1, deg: 0, zone: 7, attackValue: 4, transX: 0, transY: 0, capitol: false },
-			//{ name: 'Dubrovnik', className: 'dubrovnik', biom_type: 'timber', x: 47.8, y: 51.1, size: 10.3, deg: 0, zone: 7, attackValue: 1, transX: 0, transY: 0, capitol: false },
+			{ name: 'Dubrovnik', className: 'dubrovnik', biom_type: 'timber', x: 47.8, y: 51.1, size: 10.3, deg: 0, zone: 7, attackValue: 1, transX: 0, transY: 0, capitol: false },
 			//{ name: 'Firenze Küste', className: 'firenze_coast', biom_type: 'coast', x: 45.5, y: 57, size: 3.5, deg: 0, zone: 7, attackValue: 0, transX: 0, transY: 0, capitol: false },
 			//{ name: 'Firenze', className: 'firenze', biom_type: 'cloth', x: 39.8, y: 55.6, size: 8.4, deg: 0, zone: 7, attackValue: 4, transX: 0, transY: 0, capitol: false },
 			//{ name: 'Genoa Küste', className: 'genoa_coast', biom_type: 'coast', x: 37.89, y: 59, size: 6.6, deg: 0, zone: 7, attackValue: 0, transX: 0, transY: 0, capitol: false },
